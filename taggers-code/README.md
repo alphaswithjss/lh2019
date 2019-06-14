@@ -2,6 +2,8 @@
 
 ## Basic code for q/g taggers
 
+This is part of the [jet studies at the Les-Houches 2019 workshop](..)
+
 The file [qg-taggers.hh](qg-taggers.hh) contains code for 3 classifiers:
 
  - Angularity(alpha, R, optional_groomer):
@@ -31,6 +33,6 @@ The file [qg-taggers.hh](qg-taggers.hh) contains code for 3 classifiers:
       have a kt above the ktcut and, when present, pass the SoftDrop
       condition for the specified zcut and beta
 
-# Notes
+### Notes
 
 The other files are just quick tests obtained with Pythia

@@ -4,4 +4,11 @@ This is the github repo for the jet working group at the Les Houches PhysTeV 201
 
 ### Folders
 
-Please feel free to add a folder for any (sub)project you are working on!  This repo can contain code, notes, etc.
+Current folders are as follows:
+
+ - [procedings](procedings): writeup for the proceedings
+
+ - [taggers-code](taggers-code): generic code for q/g taggers
+
+ - [pdf-studies](pdf-studies): all aspects related to using q/g classification to
+   constrain the gluon PDF at large x
