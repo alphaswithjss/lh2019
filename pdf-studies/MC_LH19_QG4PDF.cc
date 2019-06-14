@@ -30,34 +30,67 @@ namespace Rivet {
   class QGClassifiedXS{
   public:
     /// ctor w proper initialisation
-    QGClassifiedXS(FunctionOfPseudoJet<double> *v_ptr, double vcut,
-                   Histo1DPtr h_qq, Histo1DPtr h_qg, Histo1DPtr h_gg)
-      : _v(v_ptr), _vcut(vcut), _h_qq(h_qq), _h_qg(h_qg), _h_gg(h_gg){}
+    QGClassifiedXS(FunctionOfPseudoJet<double> *v_ptr,
+                   const vector<double> &vcuts,
+                   vector<Histo1DPtr> &hs_qq, vector<Histo1DPtr> &hs_qg, vector<Histo1DPtr> &hs_gg,
+                   bool integer_valued=false)
+      : _v(v_ptr), _vcuts(vcuts), _hs_qq(hs_qq), _hs_qg(hs_qg), _hs_gg(hs_gg), _integer_valued(integer_valued){}
 
     /// process an event (given by a set of jets and a weight)
     void process(const vector<PseudoJet> & jets, double weight){
-      // classify the event
-      Histo1DPtr h;
-      if (jets.size()<2){
-        // let's say it is qq
-        h = _h_qq;
-      } else {
-        unsigned int nquarks = 0;
-        if ((*_v)(jets[0])<_vcut) ++nquarks;
-        if ((*_v)(jets[1])<_vcut) ++nquarks;
-        h = (nquarks==0) ? _h_gg : ((nquarks==1) ? _h_qg : _h_qq);
-      }
+      // compute the discriminant on the 2 leading jets
+      vector<double> vs = {(jets.size()>0) ? (*_v)(jets[0]) : -1.0,
+                           (jets.size()>1) ? (*_v)(jets[1]) : -1.0};
 
-      // bin the jets
-      for (const auto &jet : jets){
-        h->fill(jet.pt(), weight);
-      }
+      // compute the jet pts
+      vector<double> pts;
+      pts.reserve(jets.size());
+      for (const auto &jet : jets) pts.push_back(jet.pt());
+
+      if (_integer_valued){
+        // for multiplicities, we interpolate between integer cuts
+        // for each cut, classify and bin
+        for (unsigned int icut=0; icut<_vcuts.size(); ++icut){
+          vector<double> gluon_weights;
+          for (auto const v : vs){
+            if (v>=_vcuts[icut]) gluon_weights.push_back(1.0);
+            else{
+              if (v<_vcuts[icut]-1) gluon_weights.push_back(0.0);
+              else gluon_weights.push_back(1-(_vcuts[icut]-v));
+            }
+          }
+
+          double w_qq = (1-gluon_weights[0])*(1-gluon_weights[1]);
+          double w_gg = gluon_weights[0]*gluon_weights[1];
+          double w_qg = 1-w_qq-w_gg;
+        
+          // bin the jets
+          for (const auto &pt : pts){
+            _hs_qq[icut]->fill(pt, weight*w_qq);
+            _hs_qg[icut]->fill(pt, weight*w_qg);
+            _hs_gg[icut]->fill(pt, weight*w_gg);
+          }
+        } // loop over cuts
+      } else {
+        // for each cut, classify and bin
+        for (unsigned int icut=0; icut<_vcuts.size(); ++icut){
+          // classify the event
+          unsigned int nquarks = 0;
+          for (auto const v : vs) if (v<_vcuts[icut]) ++nquarks;
+
+          Histo1DPtr h = (nquarks==0) ? _hs_gg[icut] : ((nquarks==1) ? _hs_qg[icut] : _hs_qq[icut]);
+
+          // bin the jets
+          for (const auto &pt : pts) h->fill(pt, weight);
+        }
+      } // loop over cuts
     }
     
   protected:
     shared_ptr<FunctionOfPseudoJet<double> > _v;
-    double _vcut;
-    Histo1DPtr _h_qq, _h_qg, _h_gg;
+    vector<double> _vcuts;
+    vector<Histo1DPtr> _hs_qq, _hs_qg, _hs_gg;
+    bool _integer_valued;
   };
 
   /// Standard jet radius used in this analysis (for both kT and anti-kT)
@@ -78,12 +111,12 @@ namespace Rivet {
     const double SD_BETA;         ///< beta for SoftDrop (loose grooming)
     const double SD_ZCUT;         ///< zcut for SoftDrop (loose grooming)
 
-    const double CUT_PLAIN_ECF;
-    const double CUT_LOOSE_ECF;
-    const double CUT_TIGHT_ECF;
-    const double CUT_PLAIN_ISD;
-    const double CUT_LOOSE_ISD;
-    const double CUT_TIGHT_ISD;
+    const vector<double> CUTS_PLAIN_ECF; ///< ./get-cuts-and-stats.py -pt 2000 -log -fstep 0.05 -shape plain_ecf_0.5
+    const vector<double> CUTS_LOOSE_ECF; ///< ./get-cuts-and-stats.py -pt 2000 -log -fstep 0.05 -shape sd_ecf_0.5
+    const vector<double> CUTS_TIGHT_ECF; ///< ./get-cuts-and-stats.py -pt 2000 -log -fstep 0.05 -shape mmdt_ecf_0.5
+    const vector<double> CUTS_PLAIN_ISD; ///< ./get-cuts-and-stats.py -pt 2000 -fstep 0.1 -shape plain_isd_1.0
+    const vector<double> CUTS_LOOSE_ISD; ///< ./get-cuts-and-stats.py -pt 2000 -fstep 0.1 -shape sd_isd_1.0
+    const vector<double> CUTS_TIGHT_ISD; ///< ./get-cuts-and-stats.py -pt 2000 -fstep 0.1 -shape mmdt_isd_1.0
     
     /// Constructor
     MC_LH19_QG4PDF()
@@ -91,18 +124,18 @@ namespace Rivet {
         PARTICLE_RAPMAX(5.0),
         JET_RADIUS(0.4),
         JET_PTMIN (100.0),
-        JET_PTMAX (5000.0),
+        JET_PTMAX (3925.0),
         JET_NPT   (50),
         JET_RAPMAX(4.5),
         MMDT_ZCUT(0.1),
         SD_BETA  (2.0),
         SD_ZCUT  (0.05),
-        CUT_PLAIN_ECF(0.1),
-        CUT_LOOSE_ECF(0.1),
-        CUT_TIGHT_ECF(0.1),
-        CUT_PLAIN_ISD(2.5),
-        CUT_LOOSE_ISD(2.5),
-        CUT_TIGHT_ISD(2.5)
+        CUTS_PLAIN_ECF({0.07168, 0.11203, 0.16660, 0.23204}),
+        CUTS_LOOSE_ECF({0.06832, 0.11205, 0.16871, 0.23468}),
+        CUTS_TIGHT_ECF({0.05072, 0.11762, 0.18024, 0.24325}),
+        CUTS_PLAIN_ISD({4.29675, 6.10855, 7.31715, 8.41689}),
+        CUTS_LOOSE_ISD({3.36962, 5.06116, 6.26175, 7.41097}),
+        CUTS_TIGHT_ISD({1.95088, 3.61970, 4.95275, 6.59159})
     {}
     
     /// Book histograms and initialise projections before the run
@@ -123,31 +156,13 @@ namespace Rivet {
       _sd.reset(new contrib::SoftDrop(SD_BETA, SD_ZCUT, JET_RADIUS));
 
       // q/g taggers and histogram bookings
-      _qg_xs.push_back(QGClassifiedXS(new EnergyCorrelationFunction(0.5), CUT_PLAIN_ECF,
-                                      bookHisto1D("plain_ecf_qq",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("plain_ecf_qg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("plain_ecf_gg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX))));
-      _qg_xs.push_back(QGClassifiedXS(new EnergyCorrelationFunction(0.5, _sd.get()), CUT_LOOSE_ECF,
-                                      bookHisto1D("loose_ecf_qq",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("loose_ecf_qg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("loose_ecf_gg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX))));
-      _qg_xs.push_back(QGClassifiedXS(new EnergyCorrelationFunction(0.5, _mmdt.get()), CUT_TIGHT_ECF,
-                                      bookHisto1D("tight_ecf_qq",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("tight_ecf_qg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("tight_ecf_gg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX))));
-
-      _qg_xs.push_back(QGClassifiedXS(new IteratedSoftDropKtMultiplicity(2.0), CUT_PLAIN_ISD,
-                                      bookHisto1D("plain_isd_qq",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("plain_isd_qg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("plain_isd_gg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX))));
-      _qg_xs.push_back(QGClassifiedXS(new IteratedSoftDropKtMultiplicity(2.0, SD_ZCUT, SD_BETA), CUT_LOOSE_ISD,
-                                      bookHisto1D("loose_isd_qq",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("loose_isd_qg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("loose_isd_gg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX))));
-      _qg_xs.push_back(QGClassifiedXS(new IteratedSoftDropKtMultiplicity(2.0, MMDT_ZCUT), CUT_TIGHT_ISD,
-                                      bookHisto1D("tight_isd_qq",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("tight_isd_qg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)),
-                                      bookHisto1D("tight_isd_gg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX))));
+      _declare_classifiers(new EnergyCorrelationFunction(0.5, JET_RADIUS),              CUTS_PLAIN_ECF, "plain_ecf");
+      _declare_classifiers(new EnergyCorrelationFunction(0.5, JET_RADIUS, _sd.get()),   CUTS_LOOSE_ECF, "loose_ecf");
+      _declare_classifiers(new EnergyCorrelationFunction(0.5, JET_RADIUS, _mmdt.get()), CUTS_TIGHT_ECF, "tight_ecf");
+      
+      _declare_classifiers(new IteratedSoftDropKtMultiplicity(1.0, JET_RADIUS),                   CUTS_PLAIN_ISD, "plain_isd", true);
+      _declare_classifiers(new IteratedSoftDropKtMultiplicity(1.0, JET_RADIUS, SD_ZCUT, SD_BETA), CUTS_LOOSE_ISD, "loose_isd", true);
+      _declare_classifiers(new IteratedSoftDropKtMultiplicity(1.0, JET_RADIUS, MMDT_ZCUT),        CUTS_TIGHT_ISD, "tight_isd", true);
     }
 
 
@@ -175,7 +190,20 @@ namespace Rivet {
     /// Normalise histograms etc., after the run
     void finalize() { }
 
-  private:
+  protected:
+    void _declare_classifiers(FunctionOfPseudoJet<double> *v, const vector<double> &vcuts, const std::string & vname, bool integer_valued=false){
+      assert(vcuts.size() == 4);
+      vector<Histo1DPtr> hs_qq, hs_qg, hs_gg;
+      for (const auto cutname : {"very_loose", "loose", "tight", "very_tight"}){
+        hs_qq.push_back(bookHisto1D(vname+"_"+cutname+"_qq",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)));
+        hs_qg.push_back(bookHisto1D(vname+"_"+cutname+"_qg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)));
+        hs_gg.push_back(bookHisto1D(vname+"_"+cutname+"_gg",logspace(JET_NPT, JET_PTMIN, JET_PTMAX)));
+      }
+      _qg_xs.push_back(QGClassifiedXS(v, vcuts, hs_qq, hs_qg, hs_gg, integer_valued));        
+    }
+
+
+    
     vector<QGClassifiedXS> _qg_xs;
     
     shared_ptr<contrib::ModifiedMassDropTagger> _mmdt;

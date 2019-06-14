@@ -15,4 +15,4 @@
 
 FASTJET_PATH=${HOME}/work/HEP-software/install/fastjet
 
-rivet-buildplugin RivetMC_LH19_QD4PDF.so MC_LH19_QG4PDF.cc -L${FASTJET-PATH}/lib -I${FASTJET-PATH}/include -Wl,-rpath,${FASTJET-PATH}/lib -lfastjetcontribfragile          
+rivet-buildplugin RivetMC_LH19_QD4PDF.so MC_LH19_QG4PDF.cc -L${FASTJET_PATH}/lib -I${FASTJET_PATH}/include -I../taggers-code/ -Wl,-rpath,${FASTJET_PATH}/lib -lfastjetcontribfragile          
