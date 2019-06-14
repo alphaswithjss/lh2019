@@ -3,6 +3,7 @@
 from hfile import *
 import argparse
 import numpy as np
+import os
 
 parser = argparse.ArgumentParser()
 
@@ -14,12 +15,14 @@ parser.add_argument('-log',   action='store_true', help='when present, assume th
 
 args = parser.parse_args()
 
+script_dir = os.path.dirname(__file__)
+
 # read in the cross-sections split in i->f channels
-incl_qq2qq=get_array('2to2/res/lhc13-ct14nlo-ymax4.5-qq2qq.res')
-incl_qq2gg=get_array('2to2/res/lhc13-ct14nlo-ymax4.5-qq2gg.res')
-incl_qg2qg=get_array('2to2/res/lhc13-ct14nlo-ymax4.5-qg2qg.res')
-incl_gg2qq=get_array('2to2/res/lhc13-ct14nlo-ymax4.5-gg2qq.res')
-incl_gg2gg=get_array('2to2/res/lhc13-ct14nlo-ymax4.5-gg2gg.res')
+incl_qq2qq=get_array(os.path.join(script_dir,'2to2/res/lhc13-ct14nlo-ymax4.5-qq2qq.res'))
+incl_qq2gg=get_array(os.path.join(script_dir,'2to2/res/lhc13-ct14nlo-ymax4.5-qq2gg.res'))
+incl_qg2qg=get_array(os.path.join(script_dir,'2to2/res/lhc13-ct14nlo-ymax4.5-qg2qg.res'))
+incl_gg2qq=get_array(os.path.join(script_dir,'2to2/res/lhc13-ct14nlo-ymax4.5-gg2qq.res'))
+incl_gg2gg=get_array(os.path.join(script_dir,'2to2/res/lhc13-ct14nlo-ymax4.5-gg2gg.res'))
 
 # convert this infto final-states admixtures
 incl_pts=incl_qq2qq[:,0]
@@ -35,8 +38,8 @@ frac_gg = np.interp(args.pt, incl_pts, incl_gg)
 #print (frac_qq, frac_qg, frac_gg, frac_qq+frac_qg+frac_gg)
 
 # read the shape distributions
-qq = get_array('../taggers-code/res/lhc13-py8.230_M13-qq2qq-ptmin'+str(int(args.pt))+'-full.res', args.shape)
-gg = get_array('../taggers-code/res/lhc13-py8.230_M13-gg2gg-ptmin'+str(int(args.pt))+'-full.res', args.shape)
+qq = get_array(os.path.join(script_dir,'../taggers-code/res/lhc13-py8.230_M13-qq2qq-ptmin'+str(int(args.pt))+'-full.res'), args.shape)
+gg = get_array(os.path.join(script_dir,'../taggers-code/res/lhc13-py8.230_M13-gg2gg-ptmin'+str(int(args.pt))+'-full.res'), args.shape)
 
 # buld corresponding "q" efficiencies
 eff= np.empty([qq.shape[0]+1,3])
@@ -81,10 +84,10 @@ nevs=xs_pt*lumi*incl_gg_fracs
 if args.log:
     cuts=np.exp(cuts)
 
-print ('number of events above pt=',args.pt,': ', nev_init)
+print ('# number of events above pt=',args.pt,': ', nev_init)
 
-print ("gg frac    shape     kept    expected")
-print ("post cut    cut     gg frac   njets")
+print ("# gg frac    shape     kept    expected")
+print ("# post cut    cut     gg frac   njets")
 for frac, cut, incl_gg_frac, nev in zip(fracs, cuts,incl_gg_fracs, nevs):
-    print (f"  {frac:.2f}   {cut:8.5f}   {incl_gg_frac:.4f}   {nev:7.2f}")
+    print (f"    {frac:.2f}   {cut:8.5f}   {incl_gg_frac:.4f}   {nev:7.2f}")
 
