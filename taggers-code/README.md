@@ -2,8 +2,6 @@
 
 ## Basic code for q/g taggers
 
-This is part of the [jet studies at the Les-Houches 2019 workshop](..)
-
 The file [qg-taggers.hh](qg-taggers.hh) contains code for 3 classifiers:
 
  - Angularity(alpha, R, optional_groomer):
