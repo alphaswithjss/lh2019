@@ -33,4 +33,12 @@ The file [qg-taggers.hh](qg-taggers.hh) contains code for 3 classifiers:
 
 ### Notes
 
-The other files are just quick tests obtained with Pythia
+ - The LH Multiplicity code uses the LundPlane fastjet contrib which
+   requires a decently recent version of
+   [fastjet-contrib](https://fastjet.hepforge.org/contrib/).
+
+ - The other files are just quick tests obtained with Pythia. GS Note:
+   They use some personal software for the framework so it is most
+   likely useless and I have just put it there for reference. The
+   result files should be more-or-less human-readable.
+
