@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# you need to run
+#   source <rivet_path>/rivetenv.(c)sh
+# before this
+#
+# Once one has built the analysis library the worflow is the following:
+#
+#   <make sure . is in RIVET_ANALYSIS_PATH>
+#   mkfifo hepmc.fifo
+#   <use the generator to spit out events to hempc.fifo>
+#   rivet --analysis=MC_LH19_QG4PDF hpemc.fifo -H output_name.yoda
+
+#RIVET_PATH=${HOME}/work/HEP-software/install/Rivet-2.5.4
+
+FASTJET_PATH=${HOME}/work/HEP-software/install/fastjet
+
+rivet-buildplugin RivetMC_LH19_QD4PDF.so MC_LH19_QG4PDF.cc -L${FASTJET-PATH}/lib -I${FASTJET-PATH}/include -Wl,-rpath,${FASTJET-PATH}/lib -lfastjetcontribfragile          
