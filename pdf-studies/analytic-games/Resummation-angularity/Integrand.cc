@@ -252,6 +252,8 @@ double dQCDSD_cumu(void *params){
     
     double finalresult = total;
     
+    if(!(finalresult == finalresult && (finalresult <= DBL_MAX && finalresult>= -DBL_MAX))) finalresult = 0.;
+    
     return(finalresult);
 }
 
@@ -389,6 +391,8 @@ double dQCD_cumu(void *params){
     cout << T0 << " " << J << " " << S << " " << H << " " << Inv << endl;
     
     double finalresult = total;
+    
+    if(!(finalresult == finalresult && (finalresult <= DBL_MAX && finalresult>= -DBL_MAX))) finalresult = 0.;
     
     return(finalresult);
 }
