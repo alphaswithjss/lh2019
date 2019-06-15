@@ -68,7 +68,7 @@ cuts=np.interp(fracs, frac_gg_cut[:max_index], eff[:max_index,0])
 # compute other stats
 #  - fraction of the x-section left after the cuts
 q_effs_at_cuts=np.interp(cuts,eff[:,0],eff[:,1])
-g_effs_at_cuts=np.interp(cuts,eff[:,0],eff[:,1])
+g_effs_at_cuts=np.interp(cuts,eff[:,0],eff[:,2])
 incl_gg_fracs=(frac_gg*(1-g_effs_at_cuts)*(1-g_effs_at_cuts)+frac_qg*(1-q_effs_at_cuts)*(1-g_effs_at_cuts)+frac_qq*(1-q_effs_at_cuts)*(1-q_effs_at_cuts))
 
 # - number of events in 150 fb^{-1} above the requested pt
