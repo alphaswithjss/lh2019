@@ -1,9 +1,7 @@
-#include "LHAPDF/LHAPDF.h"
 #include "Definitions.h"
 #include "Integrand.h"
 #include "ResumFunc.h"
 #include "HypGeo.h"
-#include "cuba.h"
 
 #include <cstring>
 #include <algorithm>
