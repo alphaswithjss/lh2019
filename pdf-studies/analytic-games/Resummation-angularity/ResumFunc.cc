@@ -1,4 +1,3 @@
-#include "LHAPDF/LHAPDF.h"
 #include "Definitions.h"
 #include "ResumFunc.h"
 
