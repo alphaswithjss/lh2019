@@ -12,3 +12,5 @@ Current folders are as follows:
 
  - [pdf-studies](pdf-studies): all aspects related to using q/g classification to
    constrain the gluon PDF at large x
+
+ - [tuning-studies](tuning-studies): parameter scans and resutls of JSS-based tuning efforts
