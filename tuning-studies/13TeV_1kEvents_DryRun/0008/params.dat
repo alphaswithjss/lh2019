@@ -1,0 +1,10 @@
+SigmaProcess:alphaSvalue 1.409266e-01
+BeamRemnants:primordialKThard 1.878143e+00
+SpaceShower:pT0Ref 1.186904e+00
+SpaceShower:pTmaxFudge 8.170762e-01
+SpaceShower:pTdampFudge 1.430365e+00
+SpaceShower:alphaSvalue 1.204008e-01
+TimeShower:alphaSvalue 1.329588e-01
+StringPT:sigma 3.660442e-01
+MultipartonInteractions:pT0Ref 1.723193e+00
+MultipartonInteractions:alphaSvalue 1.082481e-01
