@@ -193,7 +193,7 @@ namespace Rivet {
      
     /// Normalise histograms etc., after the run
     void finalize() {
-      double norm = 1.0/sumOfWeights();
+      double norm = crossSectionPerEvent()/picobarn;
       for (auto &classifier : _qg_xs){
         for (auto &h : classifier.hs_qq()) scale(h, norm); 
         for (auto &h : classifier.hs_qg()) scale(h, norm); 
