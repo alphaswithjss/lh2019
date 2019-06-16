@@ -159,6 +159,8 @@ namespace Rivet {
       _mmdt.reset(new contrib::ModifiedMassDropTagger(MMDT_ZCUT));
       _sd.reset(new contrib::SoftDrop(SD_BETA, SD_ZCUT, JET_RADIUS));
 
+      h_incl = bookHisto1D("inclusive",logspace(JET_NPT, JET_PTMIN, JET_PTMAX));
+
       // q/g taggers and histogram bookings
       _declare_classifiers(new EnergyCorrelationFunction(0.5, JET_RADIUS),              CUTS_PLAIN_ECF, "plain_ecf");
       _declare_classifiers(new EnergyCorrelationFunction(0.5, JET_RADIUS, _sd.get()),   CUTS_LOOSE_ECF, "loose_ecf");
@@ -185,7 +187,9 @@ namespace Rivet {
 
       // cluster the event and get the jets once and for all
       vector<PseudoJet> jets = _sel_jets(_jet_def(particles));
-
+      for (const auto &jet : jets)
+        h_incl->fill(jet.pt(), weight);
+      
       // loop over all classifieers
       for (auto &classifier : _qg_xs)
         classifier.process(jets, weight);      
@@ -194,6 +198,7 @@ namespace Rivet {
     /// Normalise histograms etc., after the run
     void finalize() {
       double norm = crossSectionPerEvent()/picobarn;
+      scale(h_incl, norm);
       for (auto &classifier : _qg_xs){
         for (auto &h : classifier.hs_qq()) scale(h, norm); 
         for (auto &h : classifier.hs_qg()) scale(h, norm); 
@@ -216,6 +221,7 @@ namespace Rivet {
 
     
     vector<QGClassifiedXS> _qg_xs;
+    Histo1DPtr h_incl;
     
     shared_ptr<contrib::ModifiedMassDropTagger> _mmdt;
     shared_ptr<contrib::SoftDrop> _sd;
