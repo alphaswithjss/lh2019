@@ -85,6 +85,10 @@ namespace Rivet {
         }
       } // loop over cuts
     }
+
+    vector<Histo1DPtr> & hs_qq(){ return _hs_qq;}
+    vector<Histo1DPtr> & hs_qg(){ return _hs_qg;}
+    vector<Histo1DPtr> & hs_gg(){ return _hs_gg;}
     
   protected:
     shared_ptr<FunctionOfPseudoJet<double> > _v;
@@ -188,7 +192,14 @@ namespace Rivet {
     }
      
     /// Normalise histograms etc., after the run
-    void finalize() { }
+    void finalize() {
+      double norm = 1.0/sumOfWeights();
+      for (auto &classifier : _qg_xs){
+        for (auto &h : classifier.hs_qq()) scale(h, norm); 
+        for (auto &h : classifier.hs_qg()) scale(h, norm); 
+        for (auto &h : classifier.hs_gg()) scale(h, norm); 
+      }
+    }
 
   protected:
     void _declare_classifiers(FunctionOfPseudoJet<double> *v, const vector<double> &vcuts, const std::string & vname, bool integer_valued=false){
