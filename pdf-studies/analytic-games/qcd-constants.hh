@@ -25,6 +25,7 @@ extern unsigned int nf; // default 5
 
 extern double b0; // = (11*CA-4*nf*TR)/(12*M_PI);
 extern double b1; // = (17*CA*CA-5*CA*nf-3*CF*nf)/(24*M_PI*M_PI);
+extern double b2; // = (2857./54.*CA*CA*CA+TR*nl*(2.*CF*CF-205./9.*CF*CA-1415./27.*CA*CA)+TR*TR*nl*nl*(44./9.*CF+158./27.*CA))/(64*M_PI*M_PI*M_PI);
 extern double K;  // = (67.0/18.0-M_PI*M_PI/6.0)*CA - 5.0/9.0*nf;
 
 extern double Bq; // = -3.0/4.0;

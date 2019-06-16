@@ -1,1 +1,1 @@
-mkcxx.pl -s -c
+mkcxx.pl -s -c -l '-lpython2.7'

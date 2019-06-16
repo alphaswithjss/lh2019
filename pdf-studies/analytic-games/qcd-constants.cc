@@ -10,6 +10,7 @@ unsigned int nf = 5;
 
 double b0 = (11*CA-4*nf*TR)/(12*M_PI);
 double b1 = (17*CA*CA-5*CA*nf-3*CF*nf)/(24*M_PI*M_PI);
+double b2 = (2857./54.*CA*CA*CA+TR*nf*(2.*CF*CF-205./9.*CF*CA-1415./27.*CA*CA)+TR*TR*nf*nf*(44./9.*CF+158./27.*CA))/(64*M_PI*M_PI*M_PI);
 double K  = (67.0/18.0-M_PI*M_PI/6.0)*CA - 5.0/9.0*nf;
 
 double Bq = -3.0/4.0;

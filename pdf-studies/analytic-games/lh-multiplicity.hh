@@ -1,5 +1,5 @@
 #ifndef __LH_MULTIPLICITY_HH__
-#define  __LH_MULTIPLICITY_HH__
+#define __LH_MULTIPLICITY_HH__
 
 #include "resum-blocks.hh"
 #include <cmath>
