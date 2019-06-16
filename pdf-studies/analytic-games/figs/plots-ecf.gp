@@ -17,7 +17,7 @@ set xlabel 'e@_2^{(0.5)}'
 set key bottom right
 
 set label 1 'p_t=2 TeV, R=0.4'                       right at graph 0.95, 0.57
-set label 2 '{/Symbol a}='.alpha.' GeV, {/Symbol b}='.beta.', z_{cut}='.zcut right at graph 0.95, 0.50
+set label 2 '{/Symbol a}='.alpha.', {/Symbol b}='.beta.', z_{cut}='.zcut right at graph 0.95, 0.50
 
 set grid
 
