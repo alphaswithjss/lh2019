@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
   unsigned int npt = cmd.value<unsigned int>("-npt", 100);
 
   string pdfset = cmd.value<string>("-pdfset", "CT14nlo");
-  unsigned int subset = cmd.value<unsigned int>("-subset", 0);
+  unsigned int nsubsets = cmd.value<unsigned int>("-nsubsets", 1);
   
   double ymin=cmd.value("-ymin", -0.5);
   double ymax=cmd.value("-ymax",  0.5);
@@ -50,19 +50,28 @@ int main(int argc, char *argv[]){
     ostr_ptr.reset(new ofstream(out.c_str()));
     ostr = ostr_ptr.get();
   }
+
+  gsl_set_error_handler_off();
   
-  LO lo(sqrts, mur, muf, pdfset, subset, gg2qq, gg2gg, qq2gg, qq2qq, qg2qg);
+  vector<vector<double> > res(npt,vector<double>(nsubsets,0.0));
+  for (unsigned int iset=0;iset<nsubsets;++iset){
+    LO lo(sqrts, mur, muf, pdfset, iset, gg2qq, gg2gg, qq2gg, qq2qq, qg2qg);
+    for (unsigned int ipt=0; ipt<npt; ++ipt){
+      double f = ipt/(1.0*npt);
+      double pt = exp((1-f)*log(ptmin) + f*log(ptmax));
+      res[ipt][iset]=lo.dsigma_dpt(pt, PARTON_BOTH, ymin, ymax);
+    }
+  }
 
   (*ostr) << "# ran: " << cmd.command_line() << endl;
   (*ostr) << "# pt  gluon_jet  quark_jet" << endl;
   for (unsigned int ipt=0; ipt<npt; ++ipt){
     double f = ipt/(1.0*npt);
     double pt = exp((1-f)*log(ptmin) + f*log(ptmax));
-    double sigma_q, sigma_g;
-    sigma_g=lo.dsigma_dpt(pt, PARTON_GLUON, ymin, ymax);
-    sigma_q=lo.dsigma_dpt(pt, PARTON_QUARK, ymin, ymax);
-    
-    (*ostr) << setw(15) << pt << setw(15) << sigma_g << setw(15) << sigma_q << endl;
+    (*ostr) << setw(15) << pt;
+    for (unsigned int iset=0;iset<nsubsets;++iset)
+      (*ostr) << " " << setw(15) << res[ipt][iset];
+    (*ostr) << endl;
   }
 
   return 0;

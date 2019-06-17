@@ -15,28 +15,28 @@ bool protonB=true;
 inline unsigned int A(unsigned int i){return protonA ? i : 12-i;}
 inline unsigned int B(unsigned int i){return protonB ? i : 12-i;}
 
-LO *fortranwrapper;
-
-extern "C" {
-  void initspectrum_(double* sqrts, double* mur, double* muf, bool* gg2qq, bool* gg2gg,
-		     bool* qq2gg, bool* qq2qq, bool* qg2qg) {
-    fortranwrapper=new LO(*sqrts,*mur,*muf,*gg2qq,*gg2gg,*qq2gg,*qq2qq,*qg2qg);
-  }
-  double quarkspectrum_(double* pt, double* ymin, double* ymax) {
-    return fortranwrapper->dsigma_dpt(*pt,1,*ymin,*ymax)*(*pt);
-  }
-  double gluonspectrum_(double* pt, double* ymin, double* ymax) {
-    return fortranwrapper->dsigma_dpt(*pt,2,*ymin,*ymax)*(*pt);
-  }
-}
+// LO *fortranwrapper;
+// 
+// extern "C" {
+//   void initspectrum_(double* sqrts, double* mur, double* muf, bool* gg2qq, bool* gg2gg,
+// 		     bool* qq2gg, bool* qq2qq, bool* qg2qg) {
+//     fortranwrapper=new LO(*sqrts,*mur,*muf,*gg2qq,*gg2gg,*qq2gg,*qq2qq,*qg2qg);
+//   }
+//   double quarkspectrum_(double* pt, double* ymin, double* ymax) {
+//     return fortranwrapper->dsigma_dpt(*pt,1,*ymin,*ymax)*(*pt);
+//   }
+//   double gluonspectrum_(double* pt, double* ymin, double* ymax) {
+//     return fortranwrapper->dsigma_dpt(*pt,2,*ymin,*ymax)*(*pt);
+//   }
+// }
 
 
 
 //-------------------------------------
 // ctor
 //-------------------------------------
-LO::LO(double _sqrts, double _mur, double _muf, bool gg2qq, bool gg2gg,
-       bool qq2gg, bool qq2qq, bool qg2qg){
+LO::LO(double _sqrts, double _mur, double _muf, const std::string &pdfset, unsigned int subset,
+       bool gg2qq, bool gg2gg, bool qq2gg, bool qq2qq, bool qg2qg){
   sqrts = _sqrts;
 
   muf = _muf;
@@ -52,14 +52,14 @@ LO::LO(double _sqrts, double _mur, double _muf, bool gg2qq, bool gg2gg,
 
   // init the PDF set from LHAPDF
   cout << "LO: load PDF set" << endl;
-  LHAPDF::initPDFSet("CT14nlo");
+  LHAPDF::initPDFSet(pdfset);
   //LHAPDF::initPDFSet("cteq6l1.LHgrid");
   //LHAPDF::initPDFSet("/home/frederic/Work/Software/local/share/lhapdf/PDFsets/MSTW2008nlo90cl.LHgrid");
   //LHAPDF::initPDFSet("/home/frederic/Work/Software/local/share/lhapdf/PDFsets/MSTW2008nnlo90cl.LHgrid");
-  LHAPDF::initPDF(0);
+  LHAPDF::initPDF(subset);
   //LHAPDF::initPDFSet("/afs/cern.ch/user/s/soyez/jets/jets-hadronisation/cross-sections/pp_ratio/analytic/cteq66.LHgrid");
-  cout << "  alphas(MZ) = " << LHAPDF::alphasPDF(91.2) << endl;
-  cout << "    done" << endl;
+  //cout << "  alphas(MZ) = " << LHAPDF::alphasPDF(91.2) << endl;
+  //cout << "    done" << endl;
 
   // init GSL integration workspaces  
   _w1 = gsl_integration_workspace_alloc(1000000);

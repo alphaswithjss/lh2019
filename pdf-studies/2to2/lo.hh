@@ -2,6 +2,7 @@
 #define __LO_HH__
 
 #include <gsl/gsl_integration.h>
+#include <string>
 
 const unsigned int PARTON_BOTH  = 0;
 const unsigned int PARTON_QUARK = 1;
@@ -13,8 +14,9 @@ const unsigned int PARTON_GLUON = 2;
 class LO{
 public:
   /// ctor
-  LO(double _sqrts, double _mur=1.0, double _muf=1.0, bool gg2qq=true, bool gg2gg=true,
-     bool qq2gg=true, bool qq2qq=true, bool qg2qg=true);
+  LO(double _sqrts, double _mur=1.0, double _muf=1.0,
+     const std::string &pdfset="CT14nlo", unsigned int subset=0,
+     bool gg2qq=true, bool gg2gg=true, bool qq2gg=true, bool qq2qq=true, bool qg2qg=true);
 
   /// dtor
   ~LO();
