@@ -1,13 +1,15 @@
 #ifndef __ECFS_HH__
 #define __ECFS_HH__
 
+#include "shape.hh"
+
 /// \class ECF
 /// NLL implementation of angularity distributions
 ///
 /// This is a rough implementation which is correct at LL. It (can)
 /// include(s) some of the NLL corrections to the density but no NLL
 /// corrections to the Poisson distribution itself
-class ECF{
+class ECF : public Shape{
 public:
   /// ctor
   ///  \param alpha      exponent of the angles
@@ -25,15 +27,22 @@ public:
       double muR=1.0, double muQ=1.0,
       unsigned int endpoint_order=2, double p=1.0,
       bool transition_point_corrections=false)
-    : _alpha(alpha), _R(R),
+    : Shape(),
+      _alpha(alpha), _R(R),
       _zcut(zcut), _beta(beta),
       _alphas_MZ(alphas_MZ),
       _two_loops(two_loops),
       _muR(muR), _muQ(muQ),
       _endpoint_order(endpoint_order), _p(p),
       _transition_point_corrections(transition_point_corrections){}
+
+  virtual ~ECF(){}
   
-  double fraction_below(double lambda, double pt, bool gluon);
+  virtual double density(double lambda, double pt, bool gluon){
+    return (fraction_below(lambda*1.0001, pt,  gluon)
+            -fraction_below(lambda, pt,  gluon))/(0.0001*lambda);
+  }
+  virtual double fraction_below(double lambda, double pt, bool gluon);
   double fraction_below_plain(double lambda, double pt, bool gluon);
 
 protected:

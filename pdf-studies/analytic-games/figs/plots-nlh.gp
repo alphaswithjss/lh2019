@@ -5,9 +5,9 @@ set out 'plots-nlh.pdf'
 set colors classic
 
 pt='2000'
-beta='2'
-zcut='0.05'
-ktcut='2.0'
+beta='0'
+zcut='0.1'
+ktcut='1.0'
 
 #--------------------------------------------------------------------------------
 # distribution

@@ -1,6 +1,7 @@
 #ifndef __LH_MULTIPLICITY_HH__
 #define __LH_MULTIPLICITY_HH__
 
+#include "shape.hh"
 #include "resum-blocks.hh"
 #include <cmath>
 
@@ -10,7 +11,7 @@
 /// This is a rough implementation which is correct at LL. It (can)
 /// include(s) some of the NLL corrections to the density but no NLL
 /// corrections to the Poisson distribution itself
-class LHMultiplicity{
+class LHMultiplicity : public Shape{
 public:
   /// ctor
   ///  \param ktcut      kt scale down to which the emissions are included
@@ -26,12 +27,15 @@ public:
                  double alphas_MZ,
                  bool two_loops,
                  double muR=1.0, double muQ=1.0)
-    : _ktcut(ktcut), _R(R),
+    : Shape(),
+      _ktcut(ktcut), _R(R),
       _zcut(zcut), _beta(beta),
       _alphas_MZ(alphas_MZ),
       _two_loops(two_loops),
       _muR(muR), _muQ(muQ){}
 
+  virtual ~LHMultiplicity(){}
+  
   /// probability to get a multipliccity of n
   double Pn(unsigned int n, double pt, bool gluon){
     double nu = _get_density(pt, gluon);
@@ -45,18 +49,34 @@ public:
   }
 
   /// probability to get a multipliccity of n
-  double fraction_below(double n, double pt, bool gluon){
+  virtual double density(double n, double pt, bool gluon){
+    double nu = _get_density(pt, gluon);
+
+    // this is uniformly the P(k) with k the smallest integer larger than n
+    // get the probability
+    double loc=1.0;
+    unsigned int i=0;
+    while (i<=n){
+      loc *= nu/(i+1);
+      ++i; 
+    }
+    return loc*exp(-nu);
+  }
+    
+
+  /// probability to get a multipliccity of n
+  virtual double fraction_below(double n, double pt, bool gluon){
     double nu = _get_density(pt, gluon);
     
     // get the probability
     double loc=1.0, sum=0.0;
     unsigned int i=0;
-    while (i<=n){
+    while (i<=n-1){
       sum += loc;
       loc *= nu/(i+1);
       ++i; 
     }
-    return (sum+(n-(i-1))*loc)*exp(-nu);
+    return (sum+(n-i)*loc)*exp(-nu);
   }
 
 protected:
