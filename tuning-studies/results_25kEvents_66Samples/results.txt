@@ -1,0 +1,110 @@
+# ProfVersion: 2.3.0
+# Date: 2019-06-18 13:40:15
+# InterpolationFile: /code/LesHouches2019/ipol.dat
+# DataDirectory: /code/LesHouches2019/RivetRoutines
+#
+# Limits:
+#	SigmaProcess:alphaSvalue           	0.120618 0.149944
+#	BeamRemnants:primordialKThard      	1.506325 1.992728
+#	SpaceShower:pT0Ref                 	0.794576 2.477560
+#	SpaceShower:pTmaxFudge             	0.510417 1.490886
+#	SpaceShower:pTdampFudge            	1.001718 1.497595
+#	SpaceShower:alphaSvalue            	0.100282 0.147812
+#	TimeShower:alphaSvalue             	0.100117 0.149883
+#	StringPT:sigma                     	0.302527 0.368393
+#	MultipartonInteractions:pT0Ref     	1.510489 2.975495
+#	MultipartonInteractions:alphaSvalue	0.100536 0.148252
+#
+# Fixed:
+#
+# Minimisation result:
+#
+# GOF 236.659349
+# UNITGOF 236.659349
+# NDOF 128.000000
+SigmaProcess:alphaSvalue           	0.127836
+BeamRemnants:primordialKThard      	1.610343
+SpaceShower:pT0Ref                 	1.732675
+SpaceShower:pTmaxFudge             	1.383376
+SpaceShower:pTdampFudge            	1.073175
+SpaceShower:alphaSvalue            	0.140991
+TimeShower:alphaSvalue             	0.136149
+StringPT:sigma                     	0.305655
+MultipartonInteractions:pT0Ref     	2.183898
+MultipartonInteractions:alphaSvalue	0.118401
+#
+# MIGRAD errors:
+#
+# SigmaProcess:alphaSvalue           	8.712780e-04
+# BeamRemnants:primordialKThard      	1.505656e-02
+# SpaceShower:pT0Ref                 	4.360349e-02
+# SpaceShower:pTmaxFudge             	1.289358e-02
+# SpaceShower:pTdampFudge            	6.246475e-03
+# SpaceShower:alphaSvalue            	6.685838e-04
+# TimeShower:alphaSvalue             	1.222355e-03
+# StringPT:sigma                     	5.827999e-04
+# MultipartonInteractions:pT0Ref     	9.234996e-03
+# MultipartonInteractions:alphaSvalue	8.789000e-04
+#
+# Correlation matrix:
+#
+# SigmaProcess:alphaSvalue               1.000000e+00    4.936625e-02   -6.894599e-02    6.065355e-02    2.961137e-01    3.618811e-01   -1.333855e-01   -6.878110e-02    1.582940e-01    8.431883e-03
+# BeamRemnants:primordialKThard          4.936625e-02    1.000000e+00    2.455065e-01   -2.917731e-02   -2.951118e-01   -1.535875e-02   -6.909980e-02    3.469494e-02    4.437884e-02   -6.753599e-01
+# SpaceShower:pT0Ref                    -6.894599e-02    2.455065e-01    1.000000e+00    8.815686e-02   -2.764835e-02   -4.947743e-01   -3.966875e-01   -2.136651e-01    4.051078e-02    4.102925e-04
+# SpaceShower:pTmaxFudge                 6.065355e-02   -2.917731e-02    8.815686e-02    1.000000e+00   -3.256253e-01    2.197984e-02    2.729961e-02   -2.184864e-02   -4.808477e-02    2.698898e-01
+# SpaceShower:pTdampFudge                2.961137e-01   -2.951118e-01   -2.764835e-02   -3.256253e-01    1.000000e+00    1.030228e-01   -4.196697e-02   -4.124597e-02   -1.090360e-01    1.892948e-01
+# SpaceShower:alphaSvalue                3.618811e-01   -1.535875e-02   -4.947743e-01    2.197984e-02    1.030228e-01    1.000000e+00   -1.041079e-02   -6.936642e-02   -5.086828e-02    1.344934e-01
+# TimeShower:alphaSvalue                -1.333855e-01   -6.909980e-02   -3.966875e-01    2.729961e-02   -4.196697e-02   -1.041079e-02    1.000000e+00    1.249195e-02    6.305985e-03   -4.291952e-01
+# StringPT:sigma                        -6.878110e-02    3.469494e-02   -2.136651e-01   -2.184864e-02   -4.124597e-02   -6.936642e-02    1.249195e-02    1.000000e+00   -2.316829e-02    2.578831e-01
+# MultipartonInteractions:pT0Ref         1.582940e-01    4.437884e-02    4.051078e-02   -4.808477e-02   -1.090360e-01   -5.086828e-02    6.305985e-03   -2.316829e-02    1.000000e+00    2.236323e-01
+# MultipartonInteractions:alphaSvalue    8.431883e-03   -6.753599e-01    4.102925e-04    2.698898e-01    1.892948e-01    1.344934e-01   -4.291952e-01    2.578831e-01    2.236323e-01    1.000000e+00
+#
+# Covariance matrix:
+#
+# SigmaProcess:alphaSvalue               7.603322e-07    6.487406e-07   -2.622582e-06    6.821184e-07    1.613201e-06    2.110280e-07   -1.422415e-07   -3.496356e-08    1.274719e-06    6.463543e-09
+# BeamRemnants:primordialKThard          6.487406e-07    2.271320e-04    1.614063e-04   -5.671349e-06   -2.778779e-05   -1.547988e-07   -1.273597e-06    3.048247e-07    6.176798e-06   -8.947853e-06
+# SpaceShower:pT0Ref                    -2.622582e-06    1.614063e-04    1.902992e-03    4.959940e-05   -7.535565e-06   -1.443438e-05   -2.116328e-05   -5.433715e-06    1.632064e-05    1.573462e-08
+# SpaceShower:pTmaxFudge                 6.821184e-07   -5.671349e-06    4.959940e-05    1.663427e-04   -2.623906e-05    1.895828e-07    4.306003e-07   -1.642748e-07   -5.727402e-06    3.060080e-06
+# SpaceShower:pTdampFudge                1.613201e-06   -2.778779e-05   -7.535565e-06   -2.623906e-05    3.903520e-05    4.304610e-07   -3.206652e-07   -1.502293e-07   -6.291387e-06    1.039708e-06
+# SpaceShower:alphaSvalue                2.110280e-07   -1.547988e-07   -1.443438e-05    1.895828e-07    4.304610e-07    4.472444e-07   -8.514751e-09   -2.704373e-08   -3.141722e-07    7.907112e-08
+# TimeShower:alphaSvalue                -1.422415e-07   -1.273597e-06   -2.116328e-05    4.306003e-07   -3.206652e-07   -8.514751e-09    1.495657e-06    8.906173e-09    7.122249e-08   -4.614400e-07
+# StringPT:sigma                        -3.496356e-08    3.048247e-07   -5.433715e-06   -1.642748e-07   -1.502293e-07   -2.704373e-08    8.906173e-09    3.398519e-07   -1.247346e-07    1.321637e-07
+# MultipartonInteractions:pT0Ref         1.274719e-06    6.176798e-06    1.632064e-05   -5.727402e-06   -6.291387e-06   -3.141722e-07    7.122249e-08   -1.247346e-07    8.528969e-05    1.815629e-06
+# MultipartonInteractions:alphaSvalue    6.463543e-09   -8.947853e-06    1.573462e-08    3.060080e-06    1.039708e-06    7.907112e-08   -4.614400e-07    1.321637e-07    1.815629e-06    7.728385e-07
+#
+#
+# Weights used
+#
+# /ATLAS_2017_I1637587/d01-x01-y01 1.0
+# /ATLAS_2017_I1637587/d02-x01-y01 1.0
+# /ATLAS_2017_I1637587/d03-x01-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d01-x01-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d01-x02-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d01-x03-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d01-x04-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d01-x05-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d01-x06-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d02-x01-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d02-x02-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d02-x03-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d02-x04-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d02-x05-y01 1.0
+# /ATLAS_2018_I1724098_DJ/d02-x06-y01 1.0
+#
+# Mean contribution:
+#
+# /ATLAS_2018_I1724098_DJ/d02-x04-y01	0.773025
+# /ATLAS_2018_I1724098_DJ/d01-x02-y01	0.373427
+# /ATLAS_2018_I1724098_DJ/d01-x03-y01	1.523950
+# /ATLAS_2018_I1724098_DJ/d02-x01-y01	0.497333
+# /ATLAS_2017_I1637587/d01-x01-y01	4.698848
+# /ATLAS_2018_I1724098_DJ/d02-x02-y01	0.132158
+# /ATLAS_2018_I1724098_DJ/d01-x06-y01	0.485580
+# /ATLAS_2018_I1724098_DJ/d02-x05-y01	0.399833
+# /ATLAS_2018_I1724098_DJ/d01-x01-y01	0.199938
+# /ATLAS_2017_I1637587/d03-x01-y01	7.516892
+# /ATLAS_2018_I1724098_DJ/d02-x06-y01	0.462132
+# /ATLAS_2018_I1724098_DJ/d02-x03-y01	1.062146
+# /ATLAS_2017_I1637587/d02-x01-y01	4.639943
+# /ATLAS_2018_I1724098_DJ/d01-x04-y01	0.945326
+# /ATLAS_2018_I1724098_DJ/d01-x05-y01	0.767912
