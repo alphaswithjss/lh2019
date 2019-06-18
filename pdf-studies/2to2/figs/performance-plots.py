@@ -174,22 +174,25 @@ with PdfPages(pdfname) as pdf:
         efficiencies[tagger_name][f] = numpy.insert(efficiencies[tagger_name][f],0, 1.0)
 
     # ISD
-    tagger_name=r'SD$_{(\beta=2,z_{\mathrm{cut}}=0.05)}$ + $n_{LH}^{(1\,\mathrm{ GeV})}$ [LH17,19]'
+    #tagger_name=r'SD$_{(\beta=2,z_{\mathrm{cut}}=0.05)}$ + $n_{LH}^{(1\,\mathrm{ GeV})}$ [LH17,19]'
+    tagger_name=r'$n_{LH}^{(1\,\mathrm{ GeV})}$ [LH19]'
     taggers.append(tagger_name)
     colours[tagger_name] = 'blue'
     efficiencies[tagger_name]={}
     for f in ['q', 'g']:
-        distrib=get_array('../../../taggers-code/res/lhc13-py8.230_M13-'+f+f+'2'+f+f+'-ptmin'+str(args.pt)+'-full.res', 'sd_isd_1.0')
+        #distrib=get_array('../../../taggers-code/res/lhc13-py8.230_M13-'+f+f+'2'+f+f+'-ptmin'+str(args.pt)+'-full.res', 'sd_isd_1.0')
+        distrib=get_array('../../../taggers-code/res/lhc13-py8.230_M13-'+f+f+'2'+f+f+'-ptmin'+str(args.pt)+'-full.res', 'plain_isd_1.0')
         #eps_v_cut[f]=np.max(1.0-numpy.cumsum(distrib[:,3]*(distrib[:,2]-distrib[:,0])), 0.0) # avoid rounding close to enf of spectrum
         efficiencies[tagger_name][f]=1.0-numpy.cumsum(distrib[:,3]*(distrib[:,2]-distrib[:,0]))
         efficiencies[tagger_name][f] = numpy.insert(efficiencies[tagger_name][f],0, 1.0)
 
     # NN
-    tagger_name=r'Neural Network-like'
+    tagger_name=r'NN-like (extrapolated)'
     taggers.append(tagger_name)
     colours[tagger_name] = 'black'
     efficiencies[tagger_name]={'q' : np.linspace(0.0, 1.0, 101)}
-    efficiencies[tagger_name]['g'] =  1.0-(np.exp(8.0*(1.0-efficiencies[tagger_name]['q']))-1)/(math.exp(8.0)-1)
+    exponent=10.0
+    efficiencies[tagger_name]['g'] =  1.0-(np.exp(exponent*(1.0-efficiencies[tagger_name]['q']))-1)/(math.exp(exponent)-1)
 
     # once we have the efficiencies we can compute all the rest: purity, pdf uncert, stat uncert, ...
     stat_uncerts={}
