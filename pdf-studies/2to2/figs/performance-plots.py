@@ -229,11 +229,11 @@ with PdfPages(pdfname) as pdf:
         
     # plot uncertainties
     fig = plt.figure(figsize=(6,6))
-    plt.title('ROC curves for a few selected taggers')
+    plt.title('Uncetainties for a few selected taggers')
     ax=fig.add_subplot(111)
     ax.tick_params(which='both', direction='in')
     ax.set_xlabel(r'$\varepsilon_g$')
-    ax.set_ylabel(r'$\varepsilon_q$')
+    ax.set_ylabel(r'uncertainty')
     plt.xlim(0,1)
     plt.ylim(0,0.1)
     plt.xticks(np.linspace(0,1,11))
