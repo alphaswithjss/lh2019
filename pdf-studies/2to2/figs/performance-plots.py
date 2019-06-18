@@ -163,7 +163,7 @@ with PdfPages(pdfname) as pdf:
     efficiencies[tagger_name]['q'] =  1.0-np.power(1.0-efficiencies[tagger_name]['g'], 4.0/9.0)
 
     # ECF
-    tagger_name=r'ECF$^{(0.5)}$ [LH2015]'
+    tagger_name=r'ECF$^{(0.5)}$ [LH15]'
     taggers.append(tagger_name)
     colours[tagger_name] = 'green'
     efficiencies[tagger_name]={}
@@ -174,7 +174,7 @@ with PdfPages(pdfname) as pdf:
         efficiencies[tagger_name][f] = numpy.insert(efficiencies[tagger_name][f],0, 1.0)
 
     # ISD
-    tagger_name=r'SD$_{(\beta=2,z_{\mathrm{cut}}=0.05)}$ + $n_{LH}^{(1\,\mathrm{ GeV})}$ [LH2017,19]'
+    tagger_name=r'SD$_{(\beta=2,z_{\mathrm{cut}}=0.05)}$ + $n_{LH}^{(1\,\mathrm{ GeV})}$ [LH17,19]'
     taggers.append(tagger_name)
     colours[tagger_name] = 'blue'
     efficiencies[tagger_name]={}
@@ -183,6 +183,13 @@ with PdfPages(pdfname) as pdf:
         #eps_v_cut[f]=np.max(1.0-numpy.cumsum(distrib[:,3]*(distrib[:,2]-distrib[:,0])), 0.0) # avoid rounding close to enf of spectrum
         efficiencies[tagger_name][f]=1.0-numpy.cumsum(distrib[:,3]*(distrib[:,2]-distrib[:,0]))
         efficiencies[tagger_name][f] = numpy.insert(efficiencies[tagger_name][f],0, 1.0)
+
+    # NN
+    tagger_name=r'Neural Network-like'
+    taggers.append(tagger_name)
+    colours[tagger_name] = 'black'
+    efficiencies[tagger_name]={'q' : np.linspace(0.0, 1.0, 101)}
+    efficiencies[tagger_name]['g'] =  1.0-(np.exp(8.0*(1.0-efficiencies[tagger_name]['q']))-1)/(math.exp(8.0)-1)
 
     # once we have the efficiencies we can compute all the rest: purity, pdf uncert, stat uncert, ...
     stat_uncerts={}
@@ -237,11 +244,11 @@ with PdfPages(pdfname) as pdf:
     plt.text(0.04,0.115, args.pdf,                                                                  fontsize=13, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
     plt.text(0.04,0.06, 'Pythia8.230(Monash13)',                                                   fontsize=13, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
 
-    plt.text(0.85,0.75, r'solid: $\delta_{\mathrm{PDF}}$',   fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.85,0.69, r'dashed: $\delta_{\mathrm{stat}}$', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.85,0.63, r'dotted: $\delta_{\mathrm{syst}}$', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.865,0.677, r'solid: $\delta_{\mathrm{PDF}}$',   fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.865,0.622, r'dashed: $\delta_{\mathrm{stat}}$', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.865,0.567, r'dotted: $\delta_{\mathrm{syst}}$', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
 
-    plt.plot(efficiencies[tagger]['g'], 0.05+0.0*stat_uncerts[tagger], color='black', ls=':', lw=2)
+    plt.plot(np.linspace(0,1,2), 0.05+0.0*np.linspace(0,1,2), color='black', ls=':', lw=2)
     for tagger in taggers:
         plt.plot(efficiencies[tagger]['g'], pdf_uncerts [tagger], color=colours[tagger], ls='-', label=tagger, lw=2)
         plt.plot(efficiencies[tagger]['g'], stat_uncerts[tagger], color=colours[tagger], ls='--', lw=2)
