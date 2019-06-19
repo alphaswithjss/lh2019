@@ -18,3 +18,10 @@ contributions from qq and gg initial-state imposing that the final
 state is gg (page 3 is the same for a qq final state). The bottom-line
 is that the correlation between initial and final-state is large
 (unless one looks at gg final-states at carzily large pt)
+
+### PDF sets
+
+Start w a basic set of 3 PDFs
+ - CT14nnlo (set 13000, 57 subsets)
+ - MMHT2014nnlo68cl (set 25300, 51 subsets)
+ - NNPDF31_nnlo_as_0118 (set 303600, 101 subsets)

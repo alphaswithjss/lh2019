@@ -148,6 +148,8 @@ namespace Rivet {
       FinalState fs(-PARTICLE_RAPMAX, PARTICLE_RAPMAX, 0.0*GeV);
       
       // for the jets
+      // 
+      // Note (from Pilippe Gras): we should keep everything here and use fs as the jet input, i.e. not veto the muons
       VetoedFinalState jet_input(fs);
       jet_input.vetoNeutrinos();
       jet_input.addVetoPairId(PID::MUON);
