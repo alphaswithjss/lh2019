@@ -4,6 +4,53 @@
 
 \usepackage{amsmath}
 
+\newcommand{\GeV}{\,\mathrm{GeV}}
+\newcommand{\TeV}{\,\mathrm{TeV}}
+\newcommand{\ie}{i.e.\ }
+\newcommand{\eg}{e.g.\ }
+\newcommand{\order}[1]{{\cal O}\left(#1\right)}
+\newcommand{\avg}[1]{\left\langle\smash{#1}\right\rangle}
+\newcommand{\as}{\alpha_s}
+\newcommand{\ycut}{y_{\text{cut}}}
+\newcommand{\zcut}{z_{\text{cut}}}
+\newcommand{\fcut}{f_{\text{cut}}}
+\newcommand{\ftrim}{f_{\text{trim}}}
+\newcommand{\Rtrim}{R_{\text{trim}}}
+\newcommand{\rtrim}{r_{\text{trim}}}
+\newcommand{\zprune}{z_{\text{prune}}}
+\newcommand{\Rprune}{R_{\text{prune}}}
+\newcommand{\rprune}{r_{\text{prune}}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\cf}{C_{F}}
+\newcommand{\ca}{C_{A}}
+\newcommand{\nf}{n_{F}}
+\newcommand{\MSb}{\overline{\rm MS}}
+\newcommand{\W}{{\rm W}}
+\newcommand{\TiTj}{{\bf T}_i \cdot {\bf T}_j}
+\newcommand{\ord}{\mathcal{O}}
+\newcommand{\gstrong}{g_s}
+\newcommand{\muNP}{\mu_\text{NP}}
+\newcommand{\amax}{a_2}
+\newcommand{\amin}{a_1}
+\newcommand{\tlambda}{\tilde{\lambda}}
+
+
+
+\renewcommand{\d}{\mathrm{d}}
+
+\newcommand{\SD}{SoftDrop\xspace}
+\newcommand{\ttt}[1]{{\small\texttt{#1}}}
+\newcommand{\fastjet}{\texttt{FastJet}\xspace}
+\newcommand{\fjcontrib}{\texttt{fjcontribtJet}\xspace}
+
+\usepackage{color}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkblue}{rgb}{0,0,0.7}
+\definecolor{darkred}{rgb}{0.5,0,0.0}
+
+\newcommand{\sm}[1]{\textbf{\color{darkgreen}  [#1 -- sm]}}
+
+
 \begin{document}
 
 \section{JET STUDIES\protect\footnote{Section coordinators: S.~Marzani and B.~Nachman}$^{,}$~\protect\footnote{Contributing authors: H.~Brooks, P.~Gras, Y.~Haddad, M.~LeBlanc, P.~Loch, K.~Long, E.~Metodiev, D.~Napoletano, S.~Prestel, P.~Richardson, J.~Roloff, G.~Soyez, ...(to be completed!)}}
@@ -29,8 +76,9 @@ Short abstract
 \subsection{q/g tagging in VBF and VBS}
 (Ben, Yachine, Kenneth, Paolo)
 
-\subsection{The gluon PDF (a.k.a Suppressing the QUark in the Region of RElative Large-x)}
-(Simone, Gregory, Eric)
+\input{gluon_pdf.tex}
+
+
 \subsection{Conclusion and Outlook}
 (Simone)
 
@@ -49,6 +97,6 @@ BN is supported in part by the Office of High Energy Physics of the U.S. Departm
 %
 SM is also supported by the curiosity-driven grant "Using jets to challenge the Standard Model of particle physics" from Universit\`a di Genova.
 
-\bibliography{lh2019_jets}
+\bibliography{lh2019}
 
 \end{document}
