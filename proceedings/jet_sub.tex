@@ -4,6 +4,7 @@
 
 \usepackage{cite}
 \usepackage{amsmath}
+\usepackage[colorlinks=True,citecolor=blue]{hyperref}
 
 \newcommand{\GeV}{\,\mathrm{GeV}}
 \newcommand{\TeV}{\,\mathrm{TeV}}
@@ -59,34 +60,95 @@
 Studies related to gluon jets have played a key role in particle and nuclear physics since their discovery at PETRA exactly \textbf{four decades} prior to the 2019 Les Houches workshop.  This section investigates gluon fragmentation at the LHC, covering nearly \textbf{four decades} in energy scales.  Low energy scales involving gluon (sub)jets are studied from the point of view of hadronization and Monte Carlo tuning.  Higher-order effects in parton shower programs are investigated using deep learning.  Gluon jet rejection is considered in the context of vector boson fusion/scattering processes.  One of the main studies at this Les Houches was a study about the usefulness of a gluon jet differential cross section measurement in the context of parton distribution functions.  Gluon jet identification was also briefly discussed for searches at the highest energies accessible at the LHC.
 
 \subsection{Introduction}
-(Ben)
+\label{sec:jets:intro}
 
-Discovery of the gluon~\cite{Brandelik:1979bd,Barber:1979yr,Berger:1979cj,Bartel:1979ut,Ellis:2014rma}.  Previous Les Houches reports on jets in 2017~\cite{Bendavid:2018nar} and 2015~\cite{Badger:2016bpw,Gras:2017jty}.  Reviews on jet substructure~\cite{Asquith:2018igt,Larkoski:2017jix}.
+Jets are collimated sprays of hadrons that emerge from high energy quarks and gluons and are an important asset or significant nuisance in a a majority of collider particle physics analyses.  Understanding jets and their internal structure (jet substructure~\cite{Abdesselam:2010pt,Altheimer:2012mn,Altheimer:2013yza,Adams:2015hiv,Asquith:2018igt,Larkoski:2017jix}) will directly or indirectly address a variety of fundamental questions in particle and nuclear physics.  One of the first studies related to jet substructure occurred nearly four decades ago, with the direct discovery of the gluon at PETRA~\cite{Brandelik:1979bd,Barber:1979yr,Berger:1979cj,Bartel:1979ut,Ellis:2014rma}.  It was of paramount importance at the time to study differences between jets initiated by quarks (quark jets) and jets initiated by gluons (gluon jets) in order to categorize the properties of the new boson.  This complex topic is still an active area of research in the present day and was the subject of the 2015 Les Houches report on jets~\cite{Badger:2016bpw,Gras:2017jty}.   The goal of this report is to study gluon jets at all relevant energies at the LHC, from non-perturbative scales all the way to the highest accessible energies.   Traversing nearly four decades in energy scales will reveal a plethora of interesting phenomena.  
+
+At the lowest energies, jets are dominated by non-perturbative effects.  While there has been significant progress in understanding jet formation when fixed order or resummed perturbation theory is accurate, there has been much less progress outside these regions of phase space.  While such contributions are often small for most observables, they are relevant for a precision program involving hadronic final states.  One example is the determination of the strong coupling constant, $\alpha_s$, from hadronic event shapes~\cite{Abbate:2010xh,Hoang:2015hka,TheALEPHCollaboration2004,DELPHICollaboration1997,Abdallah:2004xe,Biebel:1999zt,Abbiendi:2004qz,Buskulic:1992hq}.   After lattice determinations the most precise extraction of $\alpha_s$ use thrust and the $C$-parameter from $e^+e^-$ data.  One of the biggest challenges of this extraction is that the non-perturbative corrections are nearly degenerate with changes to $\alpha_s$~\cite{Abbate:2010xh}.  The 2017 Les Houches report on jets studied the possibility of using jet substructure at the LHC to determine $\alpha_s$~\cite{Bendavid:2018nar}.  A key ingredient to this study is jet grooming, which is a set of tools to systematically remove soft and wide angle radiation within a jet.  Well-designed grooming algorithms allow for precise theory predictions of certain observables in part because non-perturbative effects are power suppressed.  While jet grooming may not be enough to eliminate the need to estimate non-perturbative effects, grooming may provide a unique opportunity to isolate these effects for further study.   While the perturbative regions of phase space have received significant attention from the community~\cite{Frye:2016aiz,Frye:2016okc,Marzani:2017mva,Marzani:2017kqd,Kang:2018vgn,Kang:2018jwa,Baron:2018nfz,Kardos:2018kth}, the non-perturbative regions have only recently been investigated~\cite{Hoang:2019ceu}.   One of the goals of this report is to explore the non-perturbative region of groomed jets using phenomenological tools for guidance. 
+
+Both perturbative and non-perturbative regions of phase space at low energy can be important inputs to Parton Shower Monte Carlo (PSMC) parameter tuning.  In particular, there is a need for data enriched in gluon jets as many of the existing tunes are either based solely on or are anchored based on $e^+e^-$ data.  While those data are free from many nuisances like the underlying event, they are dominated by quark jets.  Various tuning campaigns at the LHC have found potential sources of tension between tunes that use jet substructure from the LHC and those that use jet and event shapes from LEP~\cite{ATL-PHYS-PUB-2014-021,Aad:2016oit}.  It is therefore critical to collect new measurements with unique and overlapping sensitive to a variety of phase space regions.  The community repository for storing measurements is HepData~\cite{Buckley:2010jn,Maguire:2017ypu} and the standard for encoding an analysis for reinterpretation is Rivet~\cite{Buckley:2010ar}.  In the preparation of this report, new routines have been added to the existing databases and a list of jet substructure measurements from the LHC experiments has been tabulated.
+
+While many aspects of PSMC programs are built on phenomenological models that must be tuned to data, there are also a variety of components that are based on fundamental aspects of the strong force and can be systematically improved. 
+
+Quark and gluon tagging for VBF/VBS.
+
+Gluon PDF.  $n_\text{LH}$~\cite{Frye:2017yrw,Marzani:2019hun}
+
+End with the highest energies.
+
+This remainder of this work is organized as follows.  Section~\ref{sec:jets:np} begins with studies related to non-perturbative aspects of jets after grooming.  Then, Sec.~\ref{sec:jets:mc}...
 
 \subsection{Non-Perturbative effects at low jet mass}
+\label{sec:jets:np}
 (Ben, Simone, Jennifer, Eric, Vincent, Helen)
 
+Soft drop/mMDT~\cite{Larkoski:2014wba,Dasgupta:2013ihk}, ATLAS~\cite{Aaboud:2017qwh,Aad:2019vyi} and CMS~\cite{Sirunyan:2018xdh}.  Analytics~\cite{Hoang:2019ceu}.  Resummation and fixed order~\cite{Frye:2016aiz,Frye:2016okc,Marzani:2017mva,Marzani:2017kqd,Kang:2018vgn,Kang:2018jwa,Baron:2018nfz,Kardos:2018kth}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{figs/Lowmassbump.pdf}
+\caption{Figure adapted from Ref.~\cite{Frye:2016aiz}.  Replace me with PDF!}
+\label{fig:jets:np:illustration}
+\end{figure}
+
 \subsection{Monte Carlo tuning with jet substructure observables}
+\label{sec:jets:mc}
 (Simone, Jennifer, Matt)
 
+Rivet~\cite{Buckley:2010ar}, Professor~\cite{Buckley:2009bj}, HepData~\cite{Buckley:2010jn,Maguire:2017ypu}.  Table with routines (and new ones from this workshop).  See \href{https://twiki.cern.ch/twiki/bin/view/LHCPhysics/LHCJetSubstructureMeasurements}{this twiki}.
+
 \subsubsection{Jet pull}
-(Helen, Vincent, , Peter R)
+\label{sec:jets:pull}
+(Helen, Vincent, Peter R)
+
+Jet pull~\cite{Gallicchio:2010sw} and measurements~\cite{Aad:2015lxa,Aaboud:2018ibj}.
 
 \subsection{Probing higher-order effects in PSMC}
+\label{sec:jets:psmc}
+
+\subsubsection{Bottom up: Triple Collinear Splitting Functions}
 (Ben, Eric, Stefan Prestel)
 
+Explain triple collinear functions.  Reference Fig.~\ref{fig:jets:np:triplecollineardiagrams}.
+
+Dire~\cite{Hoche:2015sya}.  PFN~\cite{Komiske:2018cqr}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.45\textwidth]{figs/stefanfinger.pdf}
+\caption{Replace me with proper diagrams!}
+\label{fig:jets:np:triplecollineardiagrams}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.85\textwidth]{figs/triplecollinear.pdf}
+\caption{Replace me with proper plots!}
+\label{fig:jets:np:triplecollinearNN}
+\end{figure}
+
+
+\subsubsection{Top down: $g\to b \bar b$}
+\label{sec:jets:gbb}
+(Helen, Davide)
+
 \subsection{q/g tagging in VBF and VBS}
+\label{sec:jets:vbsbvf}
 (Ben, Yachine, Kenneth, Paolo)
 
-\subsubsection{$g\to b \bar b$}
-(Helen, Davide)
+
+
+\subsection{The gluon PDF (a.k.a Suppressing the QUark in the Region of RElative Large-$x$)}
+\label{sec:jets:pdf}
 
 \input{gluon_pdf.tex}
 
 \subsubsection{The highest energy gluons at the LHC}
+\label{sec:jets:highest}
 (Ben)
 
 \subsection{Conclusion and Outlook}
+\label{sec:jets:conclusion}
 (Simone)
 
 \subsection*{Acknowledgments}
