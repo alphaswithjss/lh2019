@@ -13,7 +13,7 @@ For instance, the large PDF uncertainty in the $x\to 1$ region, also known as th
 The way to reduce this PDF uncertainty is to include in the fit data at larger $x$. However, this raises interesting theoretical issues, because fixed-order perturbation theory becomes less reliable as $x$ becomes close to unity and one should supplement theoretical predictions with threshold resummation, as studied for instance in~\cite{Corcella:2005us,Sato:2013wea,Westmark:2013vea,Bonvini:2015ira,Accardi:2014qda}.
 
 
-In this study, we focus on the gluon PDF in the region of relatively large longitudinal momentum fraction, $x\sim 10^{-1}$ \sm{check}. The datasets that mostly constrain the gluon in this region are the inclusive jet spectra, in the region of the jet transverse momentum above 1~TeV and the production of top quark pairs. From a theoretical point of view, both processes are known to very high accuracy, i.e. next-to-next-to-leading order (NNLO)~\cite{Czakon:2015owf,Currie:2016bfm}. Phenomenologically, the two processes have pros and cons. Inclusive jet production features high statistics across a wide kinematical range and, consequently, even in the high $p_t$ region we are interested the experimental uncertainties do not exceed 10\%. However, because one measures inclusive jets, one cannot distinguish the flavour content and the cross section is dominated by quark-quark scattering, which bears little information about the gluon PDF. 
+In this study, we focus on the gluon PDF in the region of relatively large longitudinal momentum fraction, $x\sim 10^{-1}$. The datasets that mostly constrain the gluon in this region are the inclusive jet spectra, in the region of the jet transverse momentum above 1~TeV and the production of top quark pairs. From a theoretical point of view, both processes are known to very high accuracy, i.e. next-to-next-to-leading order (NNLO)~\cite{Czakon:2015owf,Currie:2016bfm}. Phenomenologically, the two processes have pros and cons. Inclusive jet production features high statistics across a wide kinematical range and, consequently, even in the high $p_t$ region we are interested the experimental uncertainties do not exceed 10\%. However, because one measures inclusive jets, one cannot distinguish the flavour content and the cross section is dominated by quark-quark scattering, which bears little information about the gluon PDF. 
 %
 On the other hand, at LHC energies, top pair production is dominated by gluon fusion and therefore offers a direct probe of the gluon luminosity. In this case, however, we pay a much higher price in terms of experimental uncertainties, essentially because we run out of statistics for values of the top transverse momentum much smaller than what is reached in the case of inclusive jets. 
 %
@@ -49,7 +49,7 @@ With the same Born-level setup, we can study how the different partonic final-st
 \includegraphics[width=0.49\textwidth, page=2]{figs/performance-plots.pdf}
 \caption{The plot on the left shows the PDF uncertainty, evaluated using the NNLO set from NNPDF3.1 as a function of $gg$ purity and $qq$ contamination, as defined in the text.
 %
-The plot on the right shows how the PDF uncertainty compared to experimental systematic and statistical uncertainties, as a function of the $gg$ purity. \sm{Why do we need $\epsilon_g$? Relabel y-axis to something like: uncertainty (\%).}}
+The plot on the right shows how the PDF uncertainty compared to experimental systematic and statistical uncertainties, as a function of the $gg$ purity, assuming that  gluon jets have been identified using a tagger with efficiency $\varepsilon_g=0.42$. \sm{Relabel y-axis to something like: uncertainty (\%).}}
 \label{fig:pdf_unc_studies} 
 \end{center}
 \end{figure}
@@ -78,33 +78,41 @@ This reflects the fact that the quark parton densities are fairly-well constrain
 %
 As we move to higher values of the $gg$ purity, the less constrained gluon PDF starts to play a more significant role and, as a consequence, the overall uncertainty goes up. For instance, if we were able to devise a tagger that purifies the $gg$ final state to 80\%, we would increase the PDF uncertainty from 2\% to 12\%. 
 
-We can now attempt to assess how good a tagger we should devise in order for the gluon-jet $p_t$ spectrum to be able to constrain the gluon PDF at relatively large $x$. To this purpose, we would like to achieve a situation where the PDF uncertainty is the largest uncertainty, i.e.\ it dominates over the other theoretical and experimental uncertainties. For this feasibility study, we have decided to neglect uncertainties related to the tagging procedure, which can be evaluated, for a given algorithm, using standard scale-variation based, methods. Instead, we concentrate on experimental systematic and statistical uncertainties. These uncertainties are shown on the plot in Fig.~\ref{fig:pdf_unc_studies}, on the right, as function fo the $gg$ purity. The experimental systematic uncertainty (in dotted red)  is assumed to be a half of the one reported by the LHC collaboration in 2015~\cite{} \sm{Ben can you add the ref please?}, i.e.\ of the order of 5\%. The statistical uncertainty (in dashed green) correspond to an integrated luminosity of 300 fb$^-1$, i.e.\ roughly the amount of date collected by the end of Run~III of the LHC \sm{Is this true?} 
+We can now attempt to assess how good a tagger we should devise in order for the gluon-jet $p_t$ spectrum to be able to constrain the gluon PDF at relatively large $x$. To this purpose, we would like to achieve a situation where the PDF uncertainty is the largest uncertainty, i.e.\ it dominates over the other theoretical and experimental uncertainties. For this feasibility study, we have decided to neglect uncertainties related to the tagging procedure, which can be evaluated, for a given algorithm, using standard scale-variation based, methods. Instead, we concentrate on experimental systematic and statistical uncertainties. These uncertainties are shown on the plot in Fig.~\ref{fig:pdf_unc_studies}, on the right, as function fo the $gg$ purity, for a (yet-to-be-defined) tagging procedure that works at $\varepsilon_g=0.42$ gluon efficiency~\footnote{Instead of fixing the gluon efficiency, we could have specified the $qq$ contamination, which directly corresponds to an horizontal slice of the left-hand plot of Fig.~\ref{fig:pdf_unc_studies}. However, in view of the discussion about taggers that will follow, we find the efficiency more informative.}. 
 %
-We conclude that the PDF uncertainty becomes the dominant one if the $gg$ purity is above 0.3. Thus, this sets the goal for our tagger.
+The experimental systematic uncertainty (in dotted red)  is assumed to be a half of the one reported by the LHC collaboration in 2015~\cite{} \sm{Ben can you add the ref please?}, i.e.\ of the order of 5\%. The statistical uncertainty (in dashed green) correspond to an integrated luminosity of 300 fb$^-1$, i.e.\ roughly the amount of date collected by the end of Run~III of the LHC \sm{Is this true?} 
+%
+We conclude that the PDF uncertainty becomes the dominant one if the $gg$ purity is above 0.3, for $\varepsilon_g=0.42$. Thus, this sets the goal for our tagger.
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=0.49\textwidth, page=4]{figs/performance-plots.pdf} \hfill
 \includegraphics[width=0.49\textwidth, page=5]{figs/performance-plots.pdf}
-\caption{\sm{add caption}}
+\caption{The plot on the left show the tagging performance of the Les Houches energy correlation function and Les Houches multiplicity discussed in this study. 
+The ROC curve are obtained using a numerical simulation with the Monte Carlo parton shower Pythia~8.230~\cite{Sjostrand:2014zea}, with the Monash13 tune~\cite{Skands:2014pea} and they are compared to Casimir scaling and the extrapolated performance of a neural-network based tagger that makes use of jet topics~\cite{Metodiev:2018ftz,Komiske:2018vkc}.
+The plot on the right show, for each of the tagger (or idealised tagger) we have have considered here, the different sources of uncertainties (namely, PDF, statistical and systematic uncertainties, as a function of the gluon efficiency. 
+}
 \label{fig:performance_studies} 
 \end{center}
 \end{figure}
-A variety of techniques to define and discriminate quark-initiated versus gluon-initiated jets has been proposed and studied in the literature. It is customary to express a tagger performance in terms of ROC curves, i.e. plots that exhibits the algorithm ability of identify the signal, i.e.\ its efficiency, versus its mis-tag rate. ROC curves for a handful of quark/gluon taggers are shown in Fig.~\ref{fig:performance_studies}, on the left using a numerical simulation with the Monte Carlo parton shower Pythia~8.230~\cite{Sjostrand:2014zea}, with the Monash13 tune~\cite{Skands:2014pea}. The plot shows the signal (gluon) efficiency $\varepsilon_g$ on the horizontal axis and the background (quark) efficiency ($\varepsilon_q$) on the vertical axis. The red-line can be take as the reference and it corresponds to so-called Casimir scaling, and it is related to the universal scaling between the colour factor of the fundamental ($C_F$) and adjoint ($C_A$) representations~\cite{Larkoski:2014pca}. 
+A variety of techniques to define and discriminate quark-initiated versus gluon-initiated jets has been proposed and studied in the literature. It is customary to express a tagger performance in terms of ROC curves, i.e. plots that exhibits the algorithm ability of identify the signal, i.e.\ its efficiency, versus its mis-tag rate. ROC curves for a handful of quark/gluon taggers are shown in Fig.~\ref{fig:performance_studies}, on the left.
+%
+The plot shows the signal (gluon) efficiency $\varepsilon_g$ on the horizontal axis and the background (quark) efficiency ($\varepsilon_q$) on the vertical axis. The red-line can be take as the reference and it corresponds to so-called Casimir scaling, and it is related to the universal scaling between the colour factor of the fundamental ($C_F$) and adjoint ($C_A$) representations~\cite{Larkoski:2014pca}. 
 
 Because of the different colour factors characterising quark and gluon radiation, gluons tend to radiate more than quarks. Jet shapes such as generalised angularities~\cite{Larkoski:2014pca} and energy-correlation functions (EFCs)~\cite{Larkoski:2013eya} are a probe of such radiation and therefore by selecting jets which exhibit values of the jet shape above a certain threshold, we can enrich our gluon-jet sample. 
 % 
-Furthermore, jet shapes are fairly-well understood observables and precision-calculations exploiting both fixed-order and resummed perturbation theory are possible, thus systematic reduction of the tagger theoretical uncertainties is, in principle possible. Following the Les Houches studies performed in 2015, the best quark/gluon separation is achieved for the so-called Les Houches ECF: \sm{Do we do $\lambda$ or EFC?} 
-\begin{align}\label{LH-EFC}
-\text{EFC}^\text{(0.5)}=\sum_{i \in \text{jet}} \left(\frac{p_{ti}}{p_t} \right) \Delta R_i^{1/2}.
-\end{align}
+Furthermore, jet shapes are fairly-well understood observables and precision-calculations exploiting both fixed-order and resummed perturbation theory are possible, thus systematic reduction of the tagger theoretical uncertainties is, in principle possible. Following the Les Houches studies performed in 2015, the best quark/gluon separation is achieved for the so-called Les Houches ECF, which is characterised by an angular exponent $\alpha=0.5$.
+%
 The ROC curve for this tagger is shown in green on the left-hand plot of  Fig.~\ref{fig:performance_studies}. We note that despite the fact that jet shapes exhibit Casimir scaling at their lowest order (leading logarithmic accuracy) their discriminating power is increased if higher-order effects are included.
+%
+The curve has been obtained using a numerical simulation with the Monte Carlo parton shower Pythia~8.230~\cite{Sjostrand:2014zea}, with the Monash13 tune~\cite{Skands:2014pea}.
+
 
 Given the above consideration, it is natural to wonder if it is possible to find substructure tools
 which have a different behaviour already at leading-logarithmic
 accuracy.
 %
-It is well known that counting observables, such as the particle multiplicity in a jet, or the charged-track multiplicity, typically outperform jet shapes as gluon taggers. However, these observables are not infra-red and collinear (IRC) safe. Instead we would like to employ  a counting observable that, unlike the aforementioned multiplicities exhibits IRC safety and therefore can be calculated using perturbation theory. This is requirement is particularly important the context we are discussing as one would have to provide a theoretical calculation for a fit of parton densities. 
+It is well known that counting observables, such as the particle multiplicity in a jet, or the charged-track multiplicity, typically outperform jet shapes as gluon taggers. However, these observables are not infra-red and collinear (IRC) safe. Instead we would like to employ  a counting observable that, unlike the aforementioned multiplicities exhibits IRC safety and therefore can be calculated using perturbation theory. This requirement is particularly important the context we are discussing as one would have to provide a theoretical calculation for a fit of parton densities. 
 %
 An observable that ticks all these properties is the Iterated SoftDrop (ISD) multiplicity, which was introduced in Ref.~\cite{Frye:2017yrw}.
 %
@@ -116,9 +124,9 @@ $(z_1,\theta_1), \dots, (z_n,\theta_n)$. The multiplicity is simply the number o
 %
 It was immediately noticed that for the Iterated SoftDrop multiplicity to IRC safe, one needs either to take a negative value of the SoftDrop angular exponent $\beta$ or impose an explicit cut on the angular separation  $\theta_\text{cut}$.
 %
-For this study we employ a variant of the SoftDrop iterated multiplicity which is built setting $\beta=0$ and imposing a minimum relative transverse momentum cut ($k_t=1$~GeV), rather than an angular one. We name this variant of the Iterated SoftDrop multiplicity, the Les Houches multiplicity ($n_\text{LH}$).
+For this study we employ a variant of the SoftDrop iterated multiplicity which is built imposing a minimum relative transverse momentum cut ($k_t=1$~GeV), rather than an angular one. We name this variant of the Iterated SoftDrop multiplicity, the Les Houches multiplicity ($n_\text{LH}$).
 The ROC curve for this tagger is shown in blue on the left-hand plot of  Fig.~\ref{fig:performance_studies}. We notice the gain in the performance, while maintaining full calculability. 
-
+%
 Finally, the ROC curve shown in black corresponds to an extrapolation of the behaviour obtained with a neural-network (NN) architecture exploiting jet topics~\cite{Metodiev:2018ftz,Komiske:2018vkc}. This idea originates from techniques employed in text-classification and, as the plot shows, outperforms the Les Houches multiplicity at high gluon efficiencies $\varepsilon_g > 0.5$. Measurements of jet topics have already been performed~\cite{Aad:2019onw}, however their theoretical understanding is still in their infancy and whether one can perturbatively predict their behaviour is still work in progress.
 
 For each tagger we want to study, we can now pick an efficiency working point $\varepsilon_g$. Then, the corresponding ROC curve will give us the corresponding miss-tag rate $\varepsilon_q$ and with these two inputs we can estimate a realistic $gg$ purity using Eq.~(\ref{gg-purity});
@@ -127,7 +135,7 @@ gg \, \text{purity}\Big|_\text{after tagging}= \frac{\sigma_{gg} \varepsilon_g^2
 \end{equation}
 and analogously for $qq$ and $qg$. With this information, we are now ready to compile the final plot of this study, which is shown in Fig.~\ref{fig:performance_studies}, on the right. 
 This plot is similar in spirit to the right-hand plot of Fig.~\ref{fig:pdf_unc_studies} but now for actual quark/gluon taggers, rather than an idealised one.
-
+%
 As before, we show the different uncertainties: from PDFs ($\delta_\text{PDF}$, solid), statistical uncertainty ($\delta_\text{stat}$, dashed) and systematic one ($\delta_\text{syst}$, dotted). As discussed before, the systematic uncertainty is taken to be constant and equal to 5\%. The statistical uncertainty instead is the square root of the inverse number of the events, and so it  depends on $\varepsilon_g$ (and $\varepsilon_q$). For this, an integrated luminosity of 300~fb$^{-1}$ is assumed. Finally,  the PDF uncertainty of jet cross-section for $p_t>2$~TeV, after tagging is evaluated with NNPDF3.1, as a function of the tagger efficiency. 
 %
 The plot shows the different uncertainties $\delta_i$ for the taggers mentioned before: a tagger exhibiting simple Casimir scaling (red curves), the Les Houches ECFs (green curves), the Les Houches multiplicity (blue curves) and the neural-network tagger (black curves). The systematic uncertainty is assumed to be the same for each tagger. 
@@ -135,3 +143,5 @@ The plot shows the different uncertainties $\delta_i$ for the taggers mentioned 
 The plot shows that for jets with transverse momentum above 2~TeV a pure Casimir-scaling tagger or a ECF-based tagger are never good enough to enrich the final-state gluon content such that $\delta_\text{PDF}> \delta_\text{syst}, \delta_{stat}$.
 %
 Instead, if we pick $\epsilon_g\simeq 0.5$ the $n_\text{LH}$ tagger and the NN one do provide $\delta_\text{PDF}$ which are comparable, if not definitely bigger, then statistical and systematic uncertainties. This is definitely more marked for the NN tagger but, as mentioned before, it is currently unclear how to perform perturbative calculations for this. On the other hand, the jet transverse momentum distribution with a cut on $n_\text{LH}$ is well-defined and calculable in perturbation theory. 
+%
+However, in order to reach firmer conclusions of about the ability of these taggers to effectively discriminate between quark-like and gluon-like jets, we would have to add to this study an assessment of the tagging uncertainties. In a Monte Carlo study, this can be estimated by looking at ROC curves obtained with different Monte Carlo event generators, while in the case of an analytic study one can vary the perturbative scales. We leave such studies for future work. 
