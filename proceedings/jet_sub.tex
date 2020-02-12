@@ -129,6 +129,26 @@ Dire~\cite{Hoche:2015sya}.  PFN~\cite{Komiske:2018cqr}.
 \end{figure}
 
 
+Events are treated as sets of particles, with each particle $p_i$ specified by its momentum $\vec p_i^\mu$, mass, and particle-type.
+%
+The events are rotated to a consistent orientation by vertically aligning the second moment of the energy flow~\cite{Komiske:2019asc}.
+%
+This is accomplished by diagonalizing the spatial component of $\mathcal I^{\mu\nu} = \sum_{i=1}^M E_i v_i^\mu v_i^\nu$, where $v_i^\mu = p_i^\mu/E_i$ is the particle velocity.
+
+
+As a machine learning architecture to process the entire events in their natural representation as sets of particles, we use Particle Flow Networks (PFNs)~\cite{Komiske:2018cqr} (see also \Ref{DBLP:conf/nips/ZaheerKRPSS17}).
+%
+Intuitively, PFNs learn a collection of additive observables which are processed by a fully-connected network.
+%
+A PFN acts on an event with $M$ particles $p_i$ as $\text{PFN}(\{p_i\}_{i=1}^M) = F\left(\sum_{i=1}^M \Phi(p_i)\right)$, where $F$ and $\Phi$ are parameterized by dense networks.
+%
+The network sizes of $F$ and $\Phi$ are identical to those in \Ref{Komiske:2018cqr}, with a latent space dimension of 256.
+%
+The train, validation, and test set sizes were 175k, 10k, and 15k, respectively.
+%
+The PFN classifiers were trained for 25 epochs with a batch size of 500.
+
+
 \subsubsection{$g\to b \bar b$}
 \label{sec:jets:gbb}
 (Helen, Davide)
