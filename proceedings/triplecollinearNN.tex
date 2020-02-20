@@ -1,76 +1,93 @@
 
-Dire~\cite{Hoche:2015sya}.  PFN~\cite{Komiske:2018cqr}.
+This study aims at exposing, with the help of energy flow 
+networks~\cite{Komiske:2018cqr}, new features of jets induced by higher-order
+corrections to parton showers, using the Dire parton shower~\cite{Hoche:2015sya}
+as a test case.
 
-Here, we will discuss now useless triple-collinear corrections to Dire were, and
-how awesome double-soft contributions are.
-
-\dots some Dire bullet points
-\begin{itemize}
-\item parton showers serve two purposes: $1)$ the distribution of low-multiplicity
+Parton shower programs are an an important aspect
+of LHC phenomenology, since they imprint perturbative all-order effects onto the
+jet structure produced by Event Generators. As such, they serve two primary
+purposes: $1)$ the distribution of low-multiplicity
 (hard-scattering) states over states of arbitrarily high multiplicity, as well
 as $2)$ generating the effect of resummation for observable depending only on 
-low-multiplicity configurations.
-\item these two purposes are often in conflict, e.g.\ choices to improve
-$2)$ often limit the potential to improve $1)$ -- and vice versa. these
-conflicts are not apparent at lowest (i.e.\ leading) order.
-\item parton showers typically include states distributed with leading-order 
-(leading-logarithmic) rate in their emission- and no-emission probabilities.
-\item the rate of subsequent splittings is independent of the rate of
-previous splittings, and the evolution scales at which splittings occur is
-successively ordered -- such that resummation can occur.
-\item with demand for more precise event generation, improved parton showers
-are necessary. For example, the use of NLO PDFs (as e.g.\ mandated in NLO+PS
+low-multiplicity configurations. These two goals often lead to conflicting
+requirements, as e.g.\ choices to improve
+$2)$ often limit the potential to improve $1)$ -- and vice versa. Luckily,
+these conflicts are not directly apparent at lowest (i.e.\ leading) order. This
+has resulted in parton showers being ``stuck" at leading-order 
+(leading-logarithmic) accuracy in their description of emission and 
+no-emission rates. With increased demand for more precise event generation, 
+improved parton showers will become necessary at the LHC and beyond. For 
+example, the use of NLO PDFs (as e.g.\ mandated in NLO+PS
 matching) in the parton shower in principle requires parton showers beyond
 lowest order.
-\item one way to improve the all-order behavior of the parton shower (point $2)$ 
+
+One way to improve the all-order behavior of the parton shower (point $2)$ 
 above) while preserving a systematically improvable state distribution (point $1)$ 
 above) is to consistently include higher-order and higher-multiplicity 
-splitting functions in the parton shower.
-\item several such configurations are shown in 
-Figure~\ref{fig:jets:np:triplecollineardiagrams}. Such configurations are
-already approximated through the iterated application of leading-order
-splittings, albeit with incorrect rate (e.g.\ if the polarisation of 
+splitting functions in the parton 
+shower~\cite{Li:2016yez, Hoche:2017iem,Dulat:2018vuy}. Some of the 
+necessary ingredients at NLO are shown in 
+Fig.~\ref{fig:jets:np:triplecollineardiagrams}. 
+At leading order, these configurations are approximated through the iterated 
+application of leading-order splittings. This approximation however may
+yield an incorrect distribution\footnote{\dots e.g.\ if the polarisation of 
 the intermediate gluon in 
 Figs.~\ref{fig:jets:np:triplecollineardiagrams1}-\ref{fig:jets:np:triplecollineardiagrams4},
 \ref{fig:jets:np:triplecollineardiagrams7}-\ref{fig:jets:np:triplecollineardiagrams8}
 is omitted, leading to an incorrect modulation of azimuthal angles,
-or simply disregarding the interference between
+or by disregarding the interference between
 $C_F$-type and $C_A$-type color structures from 
-Figs.~\ref{fig:jets:np:triplecollineardiagrams7}-\ref{fig:jets:np:triplecollineardiagrams8})
-or in a phase-space constrained by successive ordering (easily leading to the 
-incorrect phase space volume, and thus failing to recover known anomalous
-dimensions)
-\item the correct final result is obtained by including the 
-configurations~\ref{fig:jets:np:triplecollineardiagrams}
-as new rates to the parton shower, and subtracting from these new rates
+Figs.~\ref{fig:jets:np:triplecollineardiagrams7}-\ref{fig:jets:np:triplecollineardiagrams8}.}
+or may be limited to phase-space regions constrained by successive 
+ordering requirements\footnote{\dots easily leading to the 
+incorrect overall phase space volume, and thus failing to recover known anomalous
+dimensions upon integration.}.
+The correct final result is obtained by including the 
+complete configurations~\ref{fig:jets:np:triplecollineardiagrams}
+as new rates in the parton shower, and subtracting from these new rates
 the leading-order result. This subtraction will, given a suitable definition
 of the leading-order shower, act to ensure local finiteness of the new, 
-subtracted, rates. We will call these subtracted rates ``corrections".
-\item In~\cite{Hoche:2017iem}, triple-collinear corrections from diagram
+subtracted, rates. We will call these subtracted rates ``NLO corrections".
+
+In~\cite{Hoche:2017iem}, triple-collinear corrections from diagrams
 similar to~\ref{fig:jets:np:triplecollineardiagrams2} were considered, with
 the difference that instead of the primary parton (indicated with a double 
 line), one of the quarks in the loop was considered as ``hard". Such
 configurations give, upon integration, give rise to the flavor-changing 
-DGLAP kernels $P_{qq'}$ and $P_{q\bar q}$. We
-will call this ``triple-collinear" correction.
-\item \cite{Dulat:2018vuy} considered all the 
-diagrams~\ref{fig:jets:np:triplecollineardiagrams}
-in the soft limit, and included all necessary virtual corrections obtained
-by moving the cuts in the indiviual diagrams in all possible ways. We
-will call this ``double-soft" correction.
-\item It should be noted that there is overlap between the
+DGLAP kernels $P_{qq'}$ and $P_{q\bar q}$. We will call this 
+``triple-collinear" correction. The calculation of these corrections has
+helped define a method to use the overlap with lowest order to construct 
+locally finite splitting rates at NLO. Numerically however, this correction is 
+expected to be small to modest.
+The soft limits of all the diagrams~\ref{fig:jets:np:triplecollineardiagrams}
+was considered in~\cite{Dulat:2018vuy}, which also included all necessary 
+virtual corrections obtained by moving the cuts in the individual diagrams in 
+all possible ways. We will call this ``double-soft" correction\footnote{
+It should be noted that there is overlap between the
 triple-collinear and double-soft limits. A complete differential calculation 
 that consistently (i.e.\ without overlap) includes all components has yet
 to be produced. Thus, we assess the potential to find observables
 that discriminate between leading-order and next-to-leading order
-results separately for triple-collinear and double-soft corrections.
+results separately, for triple-collinear, and for double-soft corrections.}. 
+The numerical effect of these double-soft corrections is expected to be appreciable.
+
+In this study, we use the implementation of the triple-collinear and 
+double-soft corrections in Dire to produce NLO pseudo-data, with the aim
+of highlighting the characteristic new features of either correction.
+
+\vspace*{3ex}
+{\bf Maybe now Eric should take over?}
+\vspace*{3ex}
+
+Results?:
+\begin{itemize}
 \item We find that the effect triple-collinear corrections (which integrate to
 the DGLAP kernels $P_{qq'}$ and $P_{q\bar q}$) is difficult to pinpoint. 
 It is somewhat surprising that the impact is almost vanishing.
 \item We find that double-soft corrections have sizable impact, and can
 easily be filtered out of the data. This is expected, since the theoretical
 description of soft gluons changes significantly.
-\item \emph{more to come, going to sleep now\dots}
 \end{itemize}
 
 \begin{figure}[h!]
