@@ -71,14 +71,14 @@ my_cmap = LinearSegmentedColormap('user-defined', cmapdict)
 pdfname = 'performance-plots.pdf'
 with PdfPages(pdfname) as pdf:
     # plot the (relative) PDF uncertainty as a function of purities
-    fig = plt.figure(figsize=(6,8))
+    fig = plt.figure(figsize=(4,5.5))
     plt.title('PDF uncertainty v (ideal) tagging purity')
     ax=fig.add_subplot(111)
     ax.set_xlabel('$gg$ purity')
     ax.set_ylabel('$qq$ contamination')
     plt.text(1.015,0.01,r'$\sqrt{s}$ = 13 TeV, anti-$k_t$(0.4), |y|<4.5', fontsize=8, rotation=90, horizontalalignment='left', verticalalignment='bottom', transform=ax.transAxes)
-    plt.text(0.95,0.92,r'$p_t$='+str(args.pt)+' GeV', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.95,0.85,args.pdf, fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.95,0.92,r'$p_t$='+str(args.pt)+' GeV', fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.95,0.85,args.pdf, fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
     plt.imshow([[math.sqrt((pqq*born_xs_delta['qq'])**2+((1-pqq-pgg)*born_xs_delta['qg'])**2+(pgg*born_xs_delta['gg'])**2) if pqq+pgg<1 else 0 for pgg in np.linspace(0,1,100) ] for pqq in np.linspace(0,1,100)], origin='lower', aspect='auto', vmin=0.02, vmax=0.14, cmap=my_cmap, extent=[0, 1, 0, 1])
     cbar = plt.colorbar(orientation='horizontal', pad=0.12, label='PDF uncertainty')
     pdf.savefig(bbox_inches='tight')
@@ -104,30 +104,30 @@ with PdfPages(pdfname) as pdf:
     nev_per_lepsg2=born_above['gg']+epsq_over_epsg*born_above['qg']+epsq_over_epsg*epsq_over_epsg*born_above['qq']
     delta_stat=1/(args.epsg*np.sqrt(args.lumi*1e6*nev_per_lepsg2))
     
-    fig = plt.figure(figsize=(6,6))
+    fig = plt.figure(figsize=(4,4))
     plt.title('PDF uncertainty v (ideal) tagging purity')
     ax=fig.add_subplot(111)
     ax.tick_params(which='both', direction='in')
     ax.set_xlabel('$gg$ purity')
-    ax.set_ylabel('PDF uncertainty')
+    ax.set_ylabel('uncertainty (%)')
     plt.xlim(0,1)
-    plt.ylim(0,0.14)
+    plt.ylim(0,14.0)
     plt.xticks(np.linspace(0,1,11))
-    plt.yticks(np.linspace(0,0.14,15))
+    plt.yticks(np.linspace(0,14.0,15))
     plt.grid(True,ls='--',lw=0.5)
     plt.text(1.015,0.01,r'$\sqrt{s}$ = 13 TeV, anti-$k_t$(0.4), |y|<4.5', fontsize=8, rotation=90, horizontalalignment='left', verticalalignment='bottom', transform=ax.transAxes)
-    plt.text(0.95,0.16, r'${\cal L}$='+f'{args.lumi:g}'+r' fb$^{-1}$, $\varepsilon_g=$'+f'{args.epsg:g}', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.95,0.10, r'$p_t$='+str(args.pt)+' GeV', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.95,0.04, args.pdf,                      fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
-    plt.plot(pgg, delta_pdf, color='blue', ls='-', label='PDF uncertainty', lw=2)
-    plt.plot(pgg, 0.05+0.0*pgg, color='red', ls=':', label='syst. uncert', lw=2)
-    plt.plot(pgg, delta_stat, color='green', ls='--', label='stat. uncert', lw=2)
+    plt.text(0.95,0.16, r'${\cal L}$='+f'{args.lumi:g}'+r' fb$^{-1}$, $\varepsilon_g=$'+f'{args.epsg:g}', fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.95,0.10, r'$p_t$='+str(args.pt)+' GeV', fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.95,0.04, args.pdf,                      fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.plot(pgg, 100*(delta_pdf),    color='blue',  ls='-',  label='PDF uncertainty', lw=2)
+    plt.plot(pgg, 100*(0.05+0.0*pgg), color='red',   ls=':',  label='syst. uncertainty', lw=2)
+    plt.plot(pgg, 100*(delta_stat),   color='green', ls='--', label='stat. uncertainty', lw=2)
     ax.legend(loc='upper left')
     pdf.savefig(bbox_inches='tight')
     plt.close()
     
     # try to see what quark mistag rate this all corresponds to
-    fig = plt.figure(figsize=(6,6))
+    fig = plt.figure(figsize=(4,4))
     plt.title('quark mistag rate')
     ax=fig.add_subplot(111)
     ax.tick_params(which='both', direction='in')
@@ -139,9 +139,9 @@ with PdfPages(pdfname) as pdf:
     plt.yticks(np.linspace(0,1.0,11))
     plt.grid(True,ls='--',lw=0.5)
     plt.text(1.015,0.01,r'$\sqrt{s}$ = 13 TeV, anti-$k_t$(0.4), |y|<4.5', fontsize=8, rotation=90, horizontalalignment='left', verticalalignment='bottom', transform=ax.transAxes)
-    plt.text(0.95,0.95, r'${\cal L}$='+f'{args.lumi:g}'+r' fb$^{-1}$, $\varepsilon_g=$'+f'{args.epsg:g}', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.95,0.89, r'$p_t$='+str(args.pt)+' GeV', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.95,0.83, args.pdf,                      fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.95,0.95, r'${\cal L}$='+f'{args.lumi:g}'+r' fb$^{-1}$, $\varepsilon_g=$'+f'{args.epsg:g}', fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.95,0.89, r'$p_t$='+str(args.pt)+' GeV', fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.95,0.83, args.pdf,                      fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
     plt.plot(pgg, epsq_over_epsg*args.epsg, color='blue', ls='-', label='$q$ mistag rate', lw=2)
     pdf.savefig(bbox_inches='tight')
     plt.close()
@@ -152,12 +152,15 @@ with PdfPages(pdfname) as pdf:
     #  - ECF
    
     taggers=[]
+    taggers_short=[]
     efficiencies={}
     colours={}
 
     # Casimir scaling: eps_g=eps_g^(CA/CF)
     tagger_name=r'Casimir: $(1-\varepsilon_g)^{C_F}=(1-\varepsilon_q)^{C_A}$'
+    tagger_short_name=r'Casimir'
     taggers.append(tagger_name)
+    taggers_short.append(tagger_short_name)
     colours[tagger_name] = 'red'
     efficiencies[tagger_name]={'g' : np.linspace(0.0, 1.0, 101)}
     efficiencies[tagger_name]['q'] =  1.0-np.power(1.0-efficiencies[tagger_name]['g'], 4.0/9.0)
@@ -165,6 +168,7 @@ with PdfPages(pdfname) as pdf:
     # ECF
     tagger_name=r'ECF$^{(0.5)}$ [LH15]'
     taggers.append(tagger_name)
+    taggers_short.append(tagger_name)
     colours[tagger_name] = 'green'
     efficiencies[tagger_name]={}
     for f in ['q', 'g']:
@@ -177,6 +181,7 @@ with PdfPages(pdfname) as pdf:
     #tagger_name=r'SD$_{(\beta=2,z_{\mathrm{cut}}=0.05)}$ + $n_{LH}^{(1\,\mathrm{ GeV})}$ [LH17,19]'
     tagger_name=r'$n_{LH}^{(1\,\mathrm{ GeV})}$ [LH19]'
     taggers.append(tagger_name)
+    taggers_short.append(tagger_name)
     colours[tagger_name] = 'blue'
     efficiencies[tagger_name]={}
     for f in ['q', 'g']:
@@ -188,7 +193,9 @@ with PdfPages(pdfname) as pdf:
 
     # NN
     tagger_name=r'NN-like (extrapolated)'
+    tagger_short_name=r'NN-like (extrap.)'
     taggers.append(tagger_name)
+    taggers_short.append(tagger_short_name)
     colours[tagger_name] = 'black'
     efficiencies[tagger_name]={'q' : np.linspace(0.0, 1.0, 101)}
     exponent=10.0
@@ -210,7 +217,7 @@ with PdfPages(pdfname) as pdf:
 
         
     # plot ROC curves
-    fig = plt.figure(figsize=(6,6))
+    fig = plt.figure(figsize=(4,4))
     plt.title('ROC curves for a few selected taggers')
     ax=fig.add_subplot(111)
     ax.tick_params(which='both', direction='in')
@@ -222,8 +229,8 @@ with PdfPages(pdfname) as pdf:
     plt.yticks(np.linspace(0,1.0,11))
     plt.grid(True,ls='--',lw=0.5)
     plt.text(1.015,0.01,r'$\sqrt{s}$ = 13 TeV, anti-$k_t$(0.4), |y|<4.5', fontsize=8, rotation=90, horizontalalignment='left', verticalalignment='bottom', transform=ax.transAxes)
-    plt.text(0.05,0.59, r'$p_t$='+str(args.pt)+' GeV', fontsize=13, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.05,0.53, 'Pythia8.230(Monash13)',       fontsize=13, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.05,0.59, r'$p_t$='+str(args.pt)+' GeV', fontsize=10, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.05,0.53, 'Pythia8.230(Monash13)',       fontsize=10, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
     for tagger in taggers:
         plt.plot(efficiencies[tagger]['g'], efficiencies[tagger]['q'], color=colours[tagger], ls='-', label=tagger, lw=2)
     ax.legend(loc='upper left')
@@ -231,30 +238,30 @@ with PdfPages(pdfname) as pdf:
     plt.close()
         
     # plot uncertainties
-    fig = plt.figure(figsize=(6,6))
-    plt.title('Uncetainties for a few selected taggers')
+    fig = plt.figure(figsize=(4,4))
+    plt.title('Uncertainties for a few selected taggers')
     ax=fig.add_subplot(111)
     ax.tick_params(which='both', direction='in')
     ax.set_xlabel(r'$\varepsilon_g$')
-    ax.set_ylabel(r'uncertainty')
+    ax.set_ylabel(r'uncertainty (%)')
     plt.xlim(0,1)
-    plt.ylim(0,0.1)
+    plt.ylim(0,10)
     plt.xticks(np.linspace(0,1,11))
     plt.yticks(np.linspace(0,plt.ylim()[1],11))
     plt.grid(True,ls='--',lw=0.5)
     plt.text(1.015,0.01,r'$\sqrt{s}$ = 13 TeV, anti-$k_t$(0.4), |y|<4.5', fontsize=8, rotation=90, horizontalalignment='left', verticalalignment='bottom', transform=ax.transAxes)
-    plt.text(0.04,0.17, r'$p_t$='+str(args.pt)+' GeV, ${\cal L}$='+f'{args.lumi:g}'+r' fb$^{-1}$', fontsize=13, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.04,0.115, args.pdf,                                                                  fontsize=13, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.04,0.06, 'Pythia8.230(Monash13)',                                                   fontsize=13, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.04,0.155, r'$p_t$='+str(args.pt)+' GeV, ${\cal L}$='+f'{args.lumi:g}'+r' fb$^{-1}$', fontsize=9, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.04,0.100, args.pdf,                                                                 fontsize=9, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.04,0.045, 'Pythia8.230(Monash13)',                                                   fontsize=9, horizontalalignment='left', verticalalignment='center', transform=ax.transAxes)
 
-    plt.text(0.865,0.677, r'solid: $\delta_{\mathrm{PDF}}$',   fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.865,0.622, r'dashed: $\delta_{\mathrm{stat}}$', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
-    plt.text(0.865,0.567, r'dotted: $\delta_{\mathrm{syst}}$', fontsize=13, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.97,0.637, r'solid: $\delta_{\mathrm{PDF}}$',   fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.97,0.582, r'dashed: $\delta_{\mathrm{stat}}$', fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
+    plt.text(0.97,0.527, r'dotted: $\delta_{\mathrm{syst}}$', fontsize=10, horizontalalignment='right', verticalalignment='center', transform=ax.transAxes)
 
-    plt.plot(np.linspace(0,1,2), 0.05+0.0*np.linspace(0,1,2), color='black', ls=':', lw=2)
-    for tagger in taggers:
-        plt.plot(efficiencies[tagger]['g'], pdf_uncerts [tagger], color=colours[tagger], ls='-', label=tagger, lw=2)
-        plt.plot(efficiencies[tagger]['g'], stat_uncerts[tagger], color=colours[tagger], ls='--', lw=2)
+    plt.plot(np.linspace(0,1,2), 100*(0.05+0.0*np.linspace(0,1,2)), color='black', ls=':', lw=2)
+    for tagger, short in zip(taggers, taggers_short):
+        plt.plot(efficiencies[tagger]['g'], 100*pdf_uncerts [tagger], color=colours[tagger], ls='-', label=short, lw=2)
+        plt.plot(efficiencies[tagger]['g'], 100*stat_uncerts[tagger], color=colours[tagger], ls='--', lw=2)
     ax.legend(loc='upper right')
     pdf.savefig(bbox_inches='tight')
     plt.close()
