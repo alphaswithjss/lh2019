@@ -1,0 +1,72 @@
+# BEGIN PLOT
+LegendOnly=/SoftDropMass/d03-x01-y01 //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/SoftDropMass/d03-x01-y01 //Users/jenniferroloff/Work/tuningStudies/SoftDropMassPtBin_tune.yoda/SoftDropMass/d03-x01-y01
+DrawOnly=/SoftDropMass/d03-x01-y01 //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/SoftDropMass/d03-x01-y01 //Users/jenniferroloff/Work/tuningStudies/SoftDropMassPtBin_tune.yoda/SoftDropMass/d03-x01-y01
+Title=Dijet selection, Soft Drop $\beta$ = 2.0, $z_{cut}$ = 0.1
+RatioPlotReference=/SoftDropMass/d03-x01-y01
+RatioPlot=1
+LogY=1
+XLabel=$\mathrm{log}_{10}[(m^{\mathrm{soft drop}}/p_{T}^{\mathrm{ungroomed}})^2]$
+YLabel=(1/$\sigma_{\mathrm{resum}}$) d$\sigma$/d $\mathrm{log}_{10}[(m^{\mathrm{soft drop}}/p_{T}^{\mathrm{ungroomed}})^2]$
+Legend=1
+# END PLOT
+
+# BEGIN HISTO1D /SoftDropMass/d03-x01-y01
+ConnectBins=0
+ErrorBars=1
+IsRef=1
+Path=/SoftDropMass/d03-x01-y01
+PolyMarker=*
+Title=Data
+# xlow	 xhigh	 val	 errminus	 errplus
+-4.500000e+00	-4.100000e+00	2.526420e-03	1.216248e-03	1.216248e-03
+-4.100000e+00	-3.700000e+00	1.787710e-02	3.144097e-03	3.144097e-03
+-3.700000e+00	-3.300000e+00	7.699770e-02	8.227286e-03	8.227286e-03
+-3.300000e+00	-2.900000e+00	1.651190e-01	1.828361e-02	1.828361e-02
+-2.900000e+00	-2.500000e+00	2.367790e-01	1.170016e-02	1.170016e-02
+-2.500000e+00	-2.100000e+00	2.572170e-01	1.081013e-02	1.081013e-02
+-2.100000e+00	-1.700000e+00	2.506880e-01	2.633851e-02	2.633851e-02
+-1.700000e+00	-1.300000e+00	2.553160e-01	3.353643e-02	3.353643e-02
+-1.300000e+00	-9.000000e-01	2.046450e-01	2.177468e-02	2.177468e-02
+-9.000000e-01	-5.000000e-01	4.628150e-02	4.620356e-03	4.620356e-03
+# END HISTO1D
+
+
+# BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/SoftDropMass/d03-x01-y01
+LineColor=red
+LineStyle=solid
+Path=//Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/SoftDropMass/d03-x01-y01
+ScaledBy=6.86942932215906442e-06
+Title=Mass only, incl. pT
+# xlow	 xhigh	 val	 errminus	 errplus
+-4.500000e+00	-4.100000e+00	2.146697e-03	1.920064e-04	1.920064e-04
+-4.100000e+00	-3.700000e+00	1.590273e-02	5.225961e-04	5.225961e-04
+-3.700000e+00	-3.300000e+00	7.185422e-02	1.110853e-03	1.110853e-03
+-3.300000e+00	-2.900000e+00	1.550259e-01	1.631670e-03	1.631670e-03
+-2.900000e+00	-2.500000e+00	2.244071e-01	1.963128e-03	1.963128e-03
+-2.500000e+00	-2.100000e+00	2.523828e-01	2.081902e-03	2.081902e-03
+-2.100000e+00	-1.700000e+00	2.588400e-01	2.108367e-03	2.108367e-03
+-1.700000e+00	-1.300000e+00	2.643700e-01	2.130769e-03	2.130769e-03
+-1.300000e+00	-9.000000e-01	2.025795e-01	1.865211e-03	1.865211e-03
+-9.000000e-01	-5.000000e-01	5.215615e-02	9.464182e-04	9.464182e-04
+# END HISTO1D
+
+
+# BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/SoftDropMassPtBin_tune.yoda/SoftDropMass/d03-x01-y01
+LineColor=blue
+LineStyle=solid
+Path=//Users/jenniferroloff/Work/tuningStudies/SoftDropMassPtBin_tune.yoda/SoftDropMass/d03-x01-y01
+ScaledBy=3.45960906417574991e-05
+Title=Mass only, pt binned
+# xlow	 xhigh	 val	 errminus	 errplus
+-4.500000e+00	-4.100000e+00	2.335236e-03	4.494164e-04	4.494164e-04
+-4.100000e+00	-3.700000e+00	1.816295e-02	1.253362e-03	1.253362e-03
+-3.700000e+00	-3.300000e+00	7.472755e-02	2.542284e-03	2.542284e-03
+-3.300000e+00	-2.900000e+00	1.540391e-01	3.650051e-03	3.650051e-03
+-2.900000e+00	-2.500000e+00	2.207231e-01	4.369255e-03	4.369255e-03
+-2.500000e+00	-2.100000e+00	2.555785e-01	4.701601e-03	4.701601e-03
+-2.100000e+00	-1.700000e+00	2.606815e-01	4.748306e-03	4.748306e-03
+-1.700000e+00	-1.300000e+00	2.630168e-01	4.769526e-03	4.769526e-03
+-1.300000e+00	-9.000000e-01	1.985815e-01	4.144317e-03	4.144317e-03
+-9.000000e-01	-5.000000e-01	5.388340e-02	2.158793e-03	2.158793e-03
+# END HISTO1D
+

@@ -1,0 +1,89 @@
+# BEGIN PLOT
+XTwosidedTicks=1
+YTwosidedTicks=1
+RatioPlotReference=/ATLAS_2018_I1711114/d02-x01-y01
+RatioPlot=1
+LogY=0
+LegendOnly=/ATLAS_2018_I1711114/d02-x01-y01 //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01 //Users/jenniferroloff/Work/tuningStudies/JSS_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01 //Users/jenniferroloff/Work/tuningStudies/monash_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01 //Users/jenniferroloff/Work/tuningStudies/ATLAS_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
+XLabel=$\Delta \theta_\text{gpp,gbb} / \pi$
+LegendAlign=r
+YLabel=$(1/\sigma) \text{d}\sigma / \text{d}\Delta \theta_\text{gpp,gbb} / \pi$
+DrawOnly=/ATLAS_2018_I1711114/d02-x01-y01 //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01 //Users/jenniferroloff/Work/tuningStudies/JSS_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01 //Users/jenniferroloff/Work/tuningStudies/monash_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01 //Users/jenniferroloff/Work/tuningStudies/ATLAS_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
+Legend=1
+# END PLOT
+
+# BEGIN HISTO1D /ATLAS_2018_I1711114/d02-x01-y01
+ConnectBins=0
+ErrorBars=1
+IsRef=1
+Path=/ATLAS_2018_I1711114/d02-x01-y01
+PolyMarker=*
+Title=Data
+# xlow	 xhigh	 val	 errminus	 errplus
+0.000000e+00	2.000000e-01	1.140000e+00	1.567923e-01	1.624975e-01
+2.000000e-01	4.000000e-01	9.150000e-01	4.703197e-02	3.430447e-02
+4.000000e-01	6.000000e-01	8.650000e-01	7.548152e-02	7.190647e-02
+6.000000e-01	8.000000e-01	9.630000e-01	9.997641e-02	9.416131e-02
+8.000000e-01	1.000000e+00	1.110000e+00	1.540679e-01	1.661550e-01
+# END HISTO1D
+
+
+# BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
+LineColor=red
+LineStyle=solid
+Path=//Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
+ScaledBy=6.55307994757536047e-04
+Title=Mass only, incl. pT
+# xlow	 xhigh	 val	 errminus	 errplus
+0.000000e+00	2.000000e-01	9.108780e-01	5.463083e-02	5.463083e-02
+2.000000e-01	4.000000e-01	1.071428e+00	5.925013e-02	5.925013e-02
+4.000000e-01	6.000000e-01	1.130407e+00	6.085904e-02	6.085904e-02
+6.000000e-01	8.000000e-01	9.993445e-01	5.722231e-02	5.722231e-02
+8.000000e-01	1.000000e+00	8.879425e-01	5.393865e-02	5.393865e-02
+# END HISTO1D
+
+
+# BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/JSS_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
+LineColor=blue
+LineStyle=solid
+Path=//Users/jenniferroloff/Work/tuningStudies/JSS_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
+ScaledBy=7.04225352112676072e-03
+Title=JSS Obs.
+# xlow	 xhigh	 val	 errminus	 errplus
+0.000000e+00	2.000000e-01	8.098590e-01	1.688673e-01	1.688673e-01
+2.000000e-01	4.000000e-01	8.098590e-01	1.688673e-01	1.688673e-01
+4.000000e-01	6.000000e-01	9.859155e-01	1.863205e-01	1.863205e-01
+6.000000e-01	8.000000e-01	1.267605e+00	2.112676e-01	2.112676e-01
+8.000000e-01	1.000000e+00	1.126761e+00	1.991850e-01	1.991850e-01
+# END HISTO1D
+
+
+# BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/monash_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
+LineColor=green
+LineStyle=solid
+Path=//Users/jenniferroloff/Work/tuningStudies/monash_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
+ScaledBy=1.26742712294043085e-03
+Title=Monash
+# xlow	 xhigh	 val	 errminus	 errplus
+0.000000e+00	2.000000e-01	8.491760e-01	7.335765e-02	7.335765e-02
+2.000000e-01	4.000000e-01	1.039290e+00	8.115493e-02	8.115493e-02
+4.000000e-01	6.000000e-01	1.140685e+00	8.502160e-02	8.502160e-02
+6.000000e-01	8.000000e-01	1.077313e+00	8.262615e-02	8.262615e-02
+8.000000e-01	1.000000e+00	8.935360e-01	7.524932e-02	7.524932e-02
+# END HISTO1D
+
+
+# BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/ATLAS_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
+LineColor=orange
+LineStyle=solid
+Path=//Users/jenniferroloff/Work/tuningStudies/ATLAS_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
+ScaledBy=6.83526999316473051e-04
+Title=ATLAS
+# xlow	 xhigh	 val	 errminus	 errplus
+0.000000e+00	2.000000e-01	9.466850e-01	5.688077e-02	5.688077e-02
+2.000000e-01	4.000000e-01	9.979495e-01	5.840058e-02	5.840058e-02
+4.000000e-01	6.000000e-01	1.083391e+00	6.084926e-02	6.084926e-02
+6.000000e-01	8.000000e-01	1.049214e+00	5.988180e-02	5.988180e-02
+8.000000e-01	1.000000e+00	9.227615e-01	5.615748e-02	5.615748e-02
+# END HISTO1D
+
