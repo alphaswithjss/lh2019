@@ -5,6 +5,8 @@
 \usepackage{cite}
 \usepackage{amsmath}
 \usepackage[colorlinks=True,citecolor=blue]{hyperref}
+\usepackage{lscape}
+\usepackage{amsmath,amssymb}
 
 \usepackage{subfigure}
 
@@ -72,7 +74,7 @@ Both perturbative and non-perturbative regions of phase space at low energy can 
 
 While many aspects of PSMC programs are built on phenomenological models that must be tuned to data, there are also a variety of components that are based on fundamental aspects of the strong force and can be systematically improved.  Various MC programs such as \textsc{Dire}, \textsc{Vincia}, and \textsc{Deductor} include various subleading resummation, helicity, and color corrections.  In particular, the \textsc{Dire} program, which is a plugin to both \textsc{Pythia} or \textsc{Sherpa} now includes all of the next-to-leading order components of the QCD splitting functions including the triple-collinear and double-soft splittings.   The 2017 Les Houches report briefly reported an investigation of standard jet substructure observables (such as the two-prong tagger $N_2$~\cite{Moult:2016cvt}) to the triple collinear splitting function~\cite{Bendavid:2018nar}.  A non-exhaustive list of such observables showed no sensitivity to this splitting function.  In order to know if any jet observable is sensitive to the extended physics modeling, deep neural network classifiers were constructed using the full observable jet phase space (kinematics and particle types).   This study confirmed that the triple-collinear splitting function is essentially non-observable, but the neural networks were able to significantly detect the double-soft splitting function.  Future work is required to construct simple observables that may become near-future measurements for probing this in data.
 
-Jet classification techniques have been used for a variety of other tasks, including quark versus gluon (q/g) jet tagging.  In the context of Les Houches 2019, the focus of q/g tagging was on the isolation of vector boson fusion (VBF) and vector boson scattering (VBS) processes.  These processes are distinguished in part by two moderate $p_T$ forward quark jets.  In the context of Higgs production, quark/gluon tagging is useful both for separating the Higgs from other Standard Model backgrounds as well as separating different Higgs production modes.   The usefulness of q/g tagging to distinguish the gluon fusion (ggH) and VBF Higgs production modes was first investigated by CMS~\cite{}\sm{add ref}.  This report will show additional studies to understand the interplay between q/g tagging and other analysis selections such as requiring a large dijet invariant mass ($m_{jj}$).
+Jet classification techniques have been used for a variety of other tasks, including quark versus gluon (q/g) jet tagging.  In the context of Les Houches 2019, the focus of q/g tagging was on the isolation of vector boson fusion (VBF) and vector boson scattering (VBS) processes.  These processes are distinguished in part by two moderate $p_T$ forward quark jets.  In the context of Higgs production, quark/gluon tagging is useful both for separating the Higgs from other Standard Model backgrounds as well as separating different Higgs production modes.   The usefulness of q/g tagging to distinguish the gluon fusion (ggH) and VBF Higgs production modes was first investigated by CMS~\cite{Khachatryan:2015bnx}.  This report will show additional studies to understand the interplay between q/g tagging and other analysis selections such as requiring a large dijet invariant mass ($m_{jj}$).
 
 While q/g tagging has traditionally been used to \textit{reject quarks}, there may also be a physics case for tagging gluons.  One possibility in particular is the possibility of using gluon jets to constrain the gluon parton distribution function (PDF).  The gluon PDF has a large uncertainty at high $x$ ($m_{jj}\sim 1$ TeV) because the existing inclusive jet data are dominated by $qq$ initial states and $gg$ constraints from $t\bar{t}$ production become statistically limited.  What if one could directly measure the $gg$ reaction cross section?  The first step in answering this question is to establish a strong correlation between the initial and final state flavors.  This means that gluon tagging the final state will bias the initial state to be more gluonic.   The second step is to identify the tradeoff between tagging performance and uncertainties.  If the current PDF uncertainty can be made larger than the statistical and systematic uncertainties, new data would be useful in constraining the gluon PDF.  Lastly, it is important that the gluon tagging strategy is theoretically well-understood so that it can be simultaneously calculated with the $p_T$ spectrum as input to the PDF fits.  For this purpose, a new observable is considered - the \textit{Les Houches multiplicity} $n_\text{LH}$, first proposed in Ref.~\cite{Marzani:2019hun} as a variation on the iterative soft drop multiplicity~\cite{Frye:2017yrw}.
 
@@ -83,48 +85,76 @@ This remainder of this chapter is organized from low to high energy3.  Section~\
 
 \subsection{Non-Perturbative effects at low jet mass}
 \label{sec:jets:np}
-(Ben, Simone, Jennifer, Eric, Vincent, Helen)
 
-Soft drop/mMDT~\cite{Larkoski:2014wba,Dasgupta:2013ihk}, ATLAS~\cite{Aaboud:2017qwh,Aad:2019vyi} and CMS~\cite{Sirunyan:2018xdh}.  Analytics~\cite{Hoang:2019ceu}.  Resummation and fixed order~\cite{Frye:2016aiz,Frye:2016okc,Marzani:2017mva,Marzani:2017kqd,Kang:2018vgn,Kang:2018jwa,Baron:2018nfz,Kardos:2018kth}
+Jet grooming is the systematic removal of soft and wide-angle emission from inside a jet.  Advances in jet grooming have resulted in algorithms like soft drop and the modified mass drop tagger (mMDT)~\cite{Larkoski:2014wba,Dasgupta:2013ihk} that are amenable to high order resummation.   Both ATLAS~\cite{Aaboud:2017qwh,Aad:2019vyi} and CMS~\cite{Sirunyan:2018xdh} have measured the soft drop jet mass and compared the differential cross section with theoretical calculations~\cite{Frye:2016aiz,Frye:2016okc,Marzani:2017mva,Marzani:2017kqd,Kang:2018vgn,Kang:2018jwa,Baron:2018nfz,Kardos:2018kth}.  As the level of both experimental and theoretical precision improves, it is natural to consider what are the next challenges.  The reconstruction and prediction of jet masses near the non-perturbative regime $k_T\lesssim \Lambda_\text{QCD}$ is becoming just as if not more important than improving the experimental and theoretical precision at medium and high masses.
+
+At the same time, jet grooming also offers an exciting opportunity to study non-perturbative effects in isolation.  In particular, non-perturbative corrections to the jet mass are localized after jet grooming.  This is illustrated in Fig.~\ref{fig:jets:np:illustration}.  Turning on and off non-perturbative modeling in Pythia lead to an $\mathcal{O}(1)$ effect in the differential cross section, but only at low jet masses.  The goal of this section is to use phenomenological tools to investigate this structure in more detail.  This region of the phase space is particularly hard to measure experimentally and has thus far largely been avoided.  However, innovations in mass reconstruction will improve the precision at low mass and this region may be well-suited for non-perturbative studies including phenomenological model tuning.  Analytic approaches to also probe this region are also an important complement to these studies and have begun with the recent work in Ref.~\cite{Hoang:2019ceu}.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.5\textwidth]{figs/Lowmassbump.pdf}
-\caption{Figure adapted from Ref.~\cite{Frye:2016aiz}.  Replace me with PDF!}
+\includegraphics[width=0.6\textwidth]{figs/Lowmassbump.pdf}
+\caption{Figure adapted from Ref.~\cite{Frye:2016aiz}.  The differential cross-section has three regimes: the left part (red) where non-perturbative effects dominate, the middle (green) regime where resummation is most accurate, and the right (blue) regime where fixed-order effects are the most relevant.}
 \label{fig:jets:np:illustration}
 \end{figure}
 
+Figure~\ref{fig:jets:np:qg} shows the groomed jet mass predicted for dijet events using Pythia and Herwig and separated into quark jets and gluon jets.  The soft drop grooming algorithm is used with the most aggressive grooming parameter $\beta=0$ (this also corresponds to mMDT).  The leading logarithm prediction for the differential cross section in the intermediate mass region ($-3\lesssim\log_{10}(m^2/p_T^2)\lesssim -2$) is a linear distribution with the slope proportional to the QCD color factor and $\alpha_s$.  For this reason, the quark distribution is flatter with respect to the gluon distribution.  In the absence of non-perturbative effects, these trends would continue down to arbitrarily small masses. Interestingly, the non-perturbative corrections are very different for quarks and gluons, with a much larger bump for quarks.  Furthermore, the corrections for Pythia and Herwig gluons are qualitatively different, with a clear peak for Pythia gluons and the absence of a peak for Herwig.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\textwidth]{figs/NPbumpvariations.pdf}
+\caption{The binned differential cross-section for the groomed jet mass using Pythia and Herwig and separately for quark and gluon jets.}
+\label{fig:jets:np:qg}
+\end{figure}
+
+The large model-dependence for gluon jets in Fig.~\ref{fig:jets:np:qg} motivated further studies.  It was found that the differences between quarks and gluons and between models were unrelated to gluon splitting to heavy flavor quarks and to specific hadronic resonances.  The effects are nearly 100\% correlated with jet constituent multiplicity.  Furthermore, the results depend strongly on the grooming parameters ($\beta$ and $z_\text{cut}$).  Additional studies are illustrated in Fig.~\ref{fig:jets:np:tracks}.  In particular, the blue and green lines fix everything about the simulation except for the hadronization model.  For $\lesssim\log_{10}(m^2/p_T^2)\lesssim -5$, there are $\mathcal{O}(1)$ differences between models while the rest of the spectrum is nearly unchanged, as expected.  However, this region is not probed differentially in the most recent ATLAS and CMS jet mass measurements.  The left plot of Fig.~\ref{fig:jets:np:tracks} shows that the entire region of interest for the large non-perturbative effects is covered by a single measurement bin.  The experimental jet mass resolution is poor in this region due to finite calorimeter granularity.  The right plot of Fig.~\ref{fig:jets:np:tracks} shows that the trends are largely preserved when only using tracking information, which has the potential to provide the necessary precision to probe the non-perturbative region in detail.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\textwidth]{figs/NPbumptracks.pdf}
+\caption{The binned differential cross-section for the groomed jet mass using various Monte Carlo models and for all particle (left) and charged-particles only (right).  The vertical line with the arrow in the left plot shows the bin boundary for the lowest mass bin in the recent ATLAS measurements~\cite{Aaboud:2017qwh,Aad:2019vyi}.}
+\label{fig:jets:np:tracks}
+\end{figure}
+
+The non-perturbative region is often avoided, but these studies indicate that there may be interesting and useful insight to learn from future studies that probe the differential cross section for the mass and potentially related observables.
+
+\clearpage
+
 \subsection{Monte Carlo tuning with jet substructure observables}
 \label{sec:jets:mc}
-(Simone, Jennifer, Matt)
 
-Rivet~\cite{Buckley:2010ar}, Professor~\cite{Buckley:2009bj}, HepData~\cite{Buckley:2010jn,Maguire:2017ypu}.  Table with routines (and new ones from this workshop).  See \href{https://twiki.cern.ch/twiki/bin/view/LHCPhysics/LHCJetSubstructureMeasurements}{this twiki}.
+\input{tuning.tex}
 
 
 \subsection{Probing higher-order effects in PSMC}
 \label{sec:jets:psmc}
 
 \subsubsection{Triple Collinear Splitting Functions}
-(Ben, Eric, Stefan Prestel)
 
 \input{triplecollinearNN.tex}
 
-
+\clearpage
 
 \subsection{q/g tagging in VBF and VBS}
 \label{sec:jets:vbsbvf}
-(Ben, Yachine, Kenneth, Paolo)
 
+Describe Fig.~\ref{fig:jets:qg}.
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.95\textwidth]{figs/qgstudy.pdf}
+\caption{blah}
+\label{fig:jets:qg}
+\end{figure}
 
 \subsection{\textsc{Squirrel} for the Gluon PDF}
 \label{sec:jets:pdf}
 
-\input{gluon_pdf.tex}dis
+\input{gluon_pdf.tex}
 
 \subsection{The highest energy gluons at the LHC}
 \label{sec:jets:highest}
-(Ben)
+
+In addition to their use for precision QCD, high $p_T$ gluons may also be a powerful tool for BSM searches.  In particular, Fig.~\ref{fig:born_studies} showed that the fraction of gluon-gluon final states decreases rapidly near the kinematic limit.  Suppose that there is a new particle at high invariant mass which decays to gluons.  Such particles are present in many BSM models, including a significant fraction of those that were proposed to explain the early Run 2 diphoton excess~\cite{Khachatryan:2016hje,Aaboud:2016tru}.  While the jets from this signal would be gluons, the dominant background at high $m_{jj}$ is from quark jets.  Therefore, a powerful gluon tagger may be able to significantly improve the sensitivity of a search to these di-gluon resonances\footnote{During the preparation of these proceedings, this was also pointed out by Ref.~\cite{Nayak:2019quy}.}.  In fact, the theoretical efficacy of gluon tagging improves the higher the mass of the new resonance: the background becomes more quark-like and quark and gluon jets become more different due to their increasing constituent multiplicity.  These theoretical gains are limited by experimental challenges related to the reconstruction of high energy constituents inside the dense core of high $p_T$ jets.  For a typical working point of 50\% gluon jet efficiency and a quark jet rejection of 10, the in-principle gain in significance to high-mass gluon resonances is $0.5^2/\sqrt{0.1^2}=2.5$.
 
 \subsection{Conclusion and Outlook}
 \label{sec:jets:conclusion}
