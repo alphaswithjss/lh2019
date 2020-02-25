@@ -2,8 +2,8 @@
 LegendOnly=//home/hbro0008/Projects/LesHouches/JetMass/MC_gluon_vince_compare/Sherpa_gluon_lund.yoda/ATLAS_2018_I1222222/mg_pT_zc-02_b-0 //home/hbro0008/Projects/LesHouches/JetMass/MC_gluon_vince_compare/Sherpa_gluon_cluster.yoda/ATLAS_2018_I1222222/mg_pT_zc-02_b-0 //home/hbro0008/Projects/LesHouches/JetMass/MC_gluon_vince_compare/vingluon.yoda/ATLAS_2018_I1222222/mg_pT_zc-02_b-0 //home/hbro0008/Projects/LesHouches/JetMass/MC_gluon_vince_compare/py8gluon_full.yoda/ATLAS_2018_I1222222/mg_pT_zc-02_b-0
 DrawOnly=//home/hbro0008/Projects/LesHouches/JetMass/MC_gluon_vince_compare/py8gluon_full.yoda/ATLAS_2018_I1222222/mg_pT_zc-02_b-0 //home/hbro0008/Projects/LesHouches/JetMass/MC_gluon_vince_compare/Sherpa_gluon_cluster.yoda/ATLAS_2018_I1222222/mg_pT_zc-02_b-0 //home/hbro0008/Projects/LesHouches/JetMass/MC_gluon_vince_compare/Sherpa_gluon_lund.yoda/ATLAS_2018_I1222222/mg_pT_zc-02_b-0 //home/hbro0008/Projects/LesHouches/JetMass/MC_gluon_vince_compare/vingluon.yoda/ATLAS_2018_I1222222/mg_pT_zc-02_b-0
 YMax=0.38
-Title=13 TeV, Groomed Charged jet mass $m_g$ ($500$ GeV $< p_{T}$ $z_{cut}=0.2$\n $\beta=0$) 
-RatioPlotReference=//home/hbro0008/Projects/LesHouches/JetMass/MC_gluon_vince_compare/py8gluon_full.yoda/ATLAS_2018_I1222222/mg_pT_zc-02_b-0
+Title=Groomed Charged jet mass $m_g$ (13 TeV $p_{T} >  500$ GeV) 
+RatioPlotReference=//home/hbro0008/Projects/LesHouches/JetMass/MC_gluon_vince_compare/Sherpa_gluon_lund.yoda/ATLAS_2018_I1222222/mg_pT_zc-02_b-0
 RatioPlot=1
 LogY=0
 RatioPlotYMax=2.5
