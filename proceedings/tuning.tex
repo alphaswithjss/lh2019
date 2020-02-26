@@ -10,14 +10,14 @@ This study compares several classes of variables in order to provide a more in-d
 Several simplifications were made in order to ease the comparisons. 
 To remove any dependence on topologies, only measurements in dijet events are considered, and only 13 TeV measurements are used.
 While both ATLAS and CMS have produced several measurements of jet substructure observables, only ATLAS measurements are considered, since there are more available measurements.
-Currently, two measurements are considered: the soft drop mass measurement~\cite{Aaboud:2017qwh} and a measurement of a variety of jet substructure observables~\cite{Aaboud:2019aii}.
+Currently, two measurements are considered: the SoftDrop mass measurement~\cite{Aaboud:2017qwh} and a measurement of a variety of jet substructure observables~\cite{Aaboud:2019aii}.
 
 
 These studies scan a similar set of parameters as the ATLAS A14 tune~\cite{ATL-PHYS-PUB-2014-021}, focusing on parameters which are sensitive to parton showers and hadronization.
 In addition to parameters which were considered for A14, one additional parameter, \texttt{StringPT:sigma}, is included due to its sensitivity to hadronization.
 The list of parameters and their ranges of allowed values are shown in Table~\ref{tab:parameterSpace}.
-The parameter space is scanned using a sampling of 300 different configurations determined by PROFESSOR2~\cite{Buckley:2009bj}, and the results are fit with a 3rd order polynomial.
-%For the soft drop observables (SDO) results, each configuration is run with PYTHIA8~\cite{Sjostrand:2014zea} using a PhaseSpace:pTHatMin of 300 GeV, 
+The parameter space is scanned using a sampling of 300 different configurations determined by \textsc{Professor2}~\cite{Buckley:2009bj}, and the results are fit with a 3rd order polynomial.
+%For the SoftDrop observables (SDO) results, each configuration is run with PYTHIA8~\cite{Sjostrand:2014zea} using a PhaseSpace:pTHatMin of 300 GeV, 
 Each configuration is run with \texttt{PhaseSpace:pTHatMin} of 400 GeV, using 200,000 events per configuration. 
 This allows sufficient sampling of the parameter space for the specific $p_{T}$ cuts of each analysis. 
 
@@ -42,14 +42,14 @@ This allows sufficient sampling of the parameter space for the specific $p_{T}$ 
 Several sets of tunes are compared in order to disentangle different effects from the measurement. 
 Two sets of tunes are compared in order to disentangle the impact of different effects on the tuning.
 In all cases, the results are compared for four different observables:
-the soft drop jet mass distribution for $\beta=0$, the soft drop jet mass distribution for $\beta=2$, 
+the SoftDrop jet mass distribution for $\beta=0$, the SoftDrop jet mass distribution for $\beta=2$, 
 the number of subjets in a soft-dropped jet $N_{\mathrm{subjets}}$, and $\mathrm{ECF}_2^{\mathrm{norm}}$.
 The two mass measurements provide insight into different aspects of the tune; $\beta=0$ is more sensitive to the perturbative parton shower information, 
 while $\beta=2$ is more affected by hadronization. The number of subjets is sensitive to the hard splittings within a jet, and $\mathrm{ECF}_2^{\mathrm{norm}}$ is more sensitive to the 
-distribution of energy within the jet. The event and jet selection is defined in the respective papers, and is taken from their RIVET routines~\cite{Buckley:2010ar}.
+distribution of energy within the jet. The event and jet selection is defined in the respective papers, and is taken from their \textsc{Rivet} routines~\cite{Buckley:2010ar}.
 
 The first tune comparison studies the sensitivity to the $p_T$ selection and binning used for the measurements. Two different tunes are performed, each using only the jet mass as input.
-The first tune uses the three jet mass measurements with different soft drop parameters from Ref.~\cite{Aaboud:2017qwh}, using the inclusive $p_T$ binning. 
+The first tune uses the three jet mass measurements with different SoftDrop parameters from Ref.~\cite{Aaboud:2017qwh}, using the inclusive $p_T$ binning. 
 The second uses the $p_T$-binned measurements from the same measurement. 
 The results of these three tunes are shown in Figure~\ref{massOnlyTune}. 
 The two tunes which use the high-$p_T$ measurement produce similar tunes, with similar uncertainties on their parameters. 
@@ -67,8 +67,8 @@ While the $p_T$-binned result in principle provides more access to information s
 \end{figure}
 
 
-The second set of tunes compares the results from each individual measurement. The first of these is the same tune as before, using the $p_T$ inclusive soft drop jet mass measurements.
-The second tune uses the measurements of six jet substructure measurements in jets groomed with the soft drop algorithms, as measured in Ref~\cite{Aaboud:2019aii}.
+The second set of tunes compares the results from each individual measurement. The first of these is the same tune as before, using the $p_T$ inclusive SoftDrop jet mass measurements.
+The second tune uses the measurements of six jet substructure measurements in jets groomed with the SoftDrop algorithms, as measured in Ref.~\cite{Aaboud:2019aii}.
 These measurements are compared to two standard tunes: the ATLAS A14 tune and the MONASH tune.~\footnote{The ATLAS tune is slightly different than the standard ATLAS tune, since it uses the ATLAS tune results, but does not use the recommended PDF set.}
 The results of these are shown in Figure~\ref{allTune}. 
 In general, the agreement of substructure observables is improved by the use of substructure measurements compared to the ATLAS A14 tune or the MONASH tune.
@@ -117,9 +117,9 @@ The full set of tuned parameters and their uncertainties is shown in Table~\ref{
 
 
 More study is needed in order to fully understand the implications of these results, but there are a few interesting comments. 
-The soft drop jet mass distribution was designed to study perturbative QCD, but also had several bins sensitive to non-perturbative effects. 
-With these preliminary studies, it appears to be as effective in tuning as Ref~\cite{Aaboud:2019aii}, even though it uses fewer observables. 
-This is likely due to the factorization of different effects in the soft drop mass distribution, allowing it to be simultaneously sensitive to fixed order effects, the parton shower, and hadronization. 
+The SoftDrop jet mass distribution was designed to study perturbative QCD, but also had several bins sensitive to non-perturbative effects. 
+With these preliminary studies, it appears to be as effective in tuning as Ref.~\cite{Aaboud:2019aii}, even though it uses fewer observables. 
+This is likely due to the factorization of different effects in the SoftDrop mass distribution, allowing it to be simultaneously sensitive to fixed order effects, the parton shower, and hadronization. 
 This shows that factorization is important, and that it is important to be sensitive to a variety of effects when creating these tunes.
 
 
