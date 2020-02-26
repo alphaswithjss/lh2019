@@ -30,7 +30,8 @@ Title=Data
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
 LineColor=red
-LineStyle=solid
+LineStyle=dashed
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
 ScaledBy=6.55307994757536047e-04
 Title=Mass only, incl. pT
@@ -45,7 +46,8 @@ Title=Mass only, incl. pT
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/SoftDropMassPtBin_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
 LineColor=blue
-LineStyle=solid
+LineStyle=dotted
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/SoftDropMassPtBin_tune.yoda/ATLAS_2018_I1711114/d02-x01-y01
 ScaledBy=3.28947368421052613e-03
 Title=Mass only, pt binned

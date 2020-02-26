@@ -30,10 +30,11 @@ Title=Data
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/ATLAS_2018_I1711114/d03-x01-y01
 LineColor=red
-LineStyle=solid
+LineStyle=dashed
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/ATLAS_2018_I1711114/d03-x01-y01
 ScaledBy=6.55307994757536047e-04
-Title=Mass only, incl. pT
+Title=Soft Drop Mass, incl. pT
 # xlow	 xhigh	 val	 errminus	 errplus
 0.000000e+00	1.000000e-01	2.509830e+00	1.282463e-01	1.282463e-01
 1.000000e-01	2.000000e-01	2.287025e+00	1.224216e-01	1.224216e-01
@@ -45,10 +46,11 @@ Title=Mass only, incl. pT
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/JSS_tune.yoda/ATLAS_2018_I1711114/d03-x01-y01
 LineColor=blue
-LineStyle=solid
+LineStyle=dotted
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/JSS_tune.yoda/ATLAS_2018_I1711114/d03-x01-y01
 ScaledBy=7.04225352112676072e-03
-Title=JSS Obs.
+Title=JSS Observables
 # xlow	 xhigh	 val	 errminus	 errplus
 0.000000e+00	1.000000e-01	2.183099e+00	3.920960e-01	3.920960e-01
 1.000000e-01	2.000000e-01	2.253521e+00	3.983701e-01	3.983701e-01
@@ -61,9 +63,10 @@ Title=JSS Obs.
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/monash_tune.yoda/ATLAS_2018_I1711114/d03-x01-y01
 LineColor=green
 LineStyle=solid
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/monash_tune.yoda/ATLAS_2018_I1711114/d03-x01-y01
 ScaledBy=1.26742712294043085e-03
-Title=Monash
+Title=MONASH
 # xlow	 xhigh	 val	 errminus	 errplus
 0.000000e+00	1.000000e-01	2.319392e+00	1.714544e-01	1.714544e-01
 1.000000e-01	2.000000e-01	2.256020e+00	1.690959e-01	1.690959e-01
@@ -75,7 +78,8 @@ Title=Monash
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/ATLAS_tune.yoda/ATLAS_2018_I1711114/d03-x01-y01
 LineColor=orange
-LineStyle=solid
+LineStyle=dashdotted
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/ATLAS_tune.yoda/ATLAS_2018_I1711114/d03-x01-y01
 ScaledBy=6.83526999316473051e-04
 Title=ATLAS

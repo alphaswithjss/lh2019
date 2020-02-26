@@ -110,9 +110,10 @@ Title=Data
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/SoftDropMass/d04-x01-y01
 LineColor=red
-LineStyle=solid
+LineStyle=dashed
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/SoftDropMass/d04-x01-y01
-Title=Mass only, incl. pT
+Title=Soft Drop Mass, incl. pT
 # xlow	 xhigh	 val	 errminus	 errplus
 0.000000e+00	1.000000e+00	2.392583e-01	4.618232e-03	4.618232e-03
 1.000000e+00	2.000000e+00	2.400606e-01	4.625969e-03	4.625969e-03
@@ -209,9 +210,10 @@ Title=Mass only, incl. pT
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/JSS_tune.yoda/SoftDropMass/d04-x01-y01
 LineColor=blue
-LineStyle=solid
+LineStyle=dotted
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/JSS_tune.yoda/SoftDropMass/d04-x01-y01
-Title=JSS Obs.
+Title=JSS Observables
 # xlow	 xhigh	 val	 errminus	 errplus
 0.000000e+00	1.000000e+00	2.370304e-01	1.456066e-02	1.456066e-02
 1.000000e+00	2.000000e+00	2.164580e-01	1.391445e-02	1.391445e-02
@@ -309,8 +311,9 @@ Title=JSS Obs.
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/monash_tune.yoda/SoftDropMass/d04-x01-y01
 LineColor=green
 LineStyle=solid
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/monash_tune.yoda/SoftDropMass/d04-x01-y01
-Title=Monash
+Title=MONASH
 # xlow	 xhigh	 val	 errminus	 errplus
 0.000000e+00	1.000000e+00	2.349218e-01	6.427173e-03	6.427173e-03
 1.000000e+00	2.000000e+00	2.358009e-01	6.439189e-03	6.439189e-03
@@ -407,7 +410,8 @@ Title=Monash
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/ATLAS_tune.yoda/SoftDropMass/d04-x01-y01
 LineColor=orange
-LineStyle=solid
+LineStyle=dashdotted
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/ATLAS_tune.yoda/SoftDropMass/d04-x01-y01
 Title=ATLAS
 # xlow	 xhigh	 val	 errminus	 errplus

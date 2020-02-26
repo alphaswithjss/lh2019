@@ -4,10 +4,13 @@ DrawOnly=/SoftDropMass/d02-x01-y01 //Users/jenniferroloff/Work/tuningStudies/Sof
 Title=Dijet selection, Soft Drop $\beta$ = 1.0, $z_{cut}$ = 0.1
 RatioPlotReference=/SoftDropMass/d02-x01-y01
 RatioPlot=1
-LogY=1
+LogY=0
+LegendXPos=0.04
 XLabel=$\mathrm{log}_{10}[(m^{\mathrm{soft drop}}/p_{T}^{\mathrm{ungroomed}})^2]$
-YLabel=(1/$\sigma_{\mathrm{resum}}$) d$\sigma$/d $\mathrm{log}_{10}[(m^{\mathrm{soft drop}}/p_{T}^{\mathrm{ungroomed}})^2]$
+YLabel=(1/$\sigma_{\mathrm{resum}}$) d$\sigma$/d $\mathrm{log}_{10}[(m^{\mathrm{SD}}/p_{T}^{\mathrm{Ungr.}})^2]$
+LegendYPos=0.97
 Legend=1
+LeftMargin=1.8
 # END PLOT
 
 # BEGIN HISTO1D /SoftDropMass/d02-x01-y01
@@ -33,10 +36,11 @@ Title=Data
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/SoftDropMass/d02-x01-y01
 LineColor=red
-LineStyle=solid
+LineStyle=dashed
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/SoftDropMass/d02-x01-y01
 ScaledBy=8.21591422585548614e-06
-Title=Mass only, incl. pT
+Title=Soft Drop Mass, incl. pT
 # xlow	 xhigh	 val	 errminus	 errplus
 -4.500000e+00	-4.100000e+00	2.247052e-02	6.793672e-04	6.793672e-04
 -4.100000e+00	-3.700000e+00	8.571253e-02	1.326845e-03	1.326845e-03
@@ -53,10 +57,11 @@ Title=Mass only, incl. pT
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/JSS_tune.yoda/SoftDropMass/d02-x01-y01
 LineColor=blue
-LineStyle=solid
+LineStyle=dotted
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/JSS_tune.yoda/SoftDropMass/d02-x01-y01
 ScaledBy=8.06939681258826377e-05
-Title=JSS Obs.
+Title=JSS Observables
 # xlow	 xhigh	 val	 errminus	 errplus
 -4.500000e+00	-4.100000e+00	2.420819e-02	2.209895e-03	2.209895e-03
 -4.100000e+00	-3.700000e+00	8.775470e-02	4.207516e-03	4.207516e-03
@@ -74,9 +79,10 @@ Title=JSS Obs.
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/monash_tune.yoda/SoftDropMass/d02-x01-y01
 LineColor=green
 LineStyle=solid
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/monash_tune.yoda/SoftDropMass/d02-x01-y01
 ScaledBy=1.60752320861632499e-05
-Title=Monash
+Title=MONASH
 # xlow	 xhigh	 val	 errminus	 errplus
 -4.500000e+00	-4.100000e+00	1.937065e-02	8.823091e-04	8.823091e-04
 -4.100000e+00	-3.700000e+00	7.474983e-02	1.733220e-03	1.733220e-03
@@ -93,7 +99,8 @@ Title=Monash
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/ATLAS_tune.yoda/SoftDropMass/d02-x01-y01
 LineColor=orange
-LineStyle=solid
+LineStyle=dashdotted
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/ATLAS_tune.yoda/SoftDropMass/d02-x01-y01
 ScaledBy=8.46202665538396794e-06
 Title=ATLAS

@@ -137,14 +137,18 @@ The non-perturbative region is often avoided, but these studies indicate that th
 \subsection{q/g tagging in VBF and VBS}
 \label{sec:jets:vbsbvf}
 
-Describe Fig.~\ref{fig:jets:qg}.
+Quark/gluon tagging is a key benchmark for jet substructure studies and has been extensively studied elsewhere (see e.g. Ref.~\cite{Badger:2016bpw,Gras:2017jty}).  Tagging quark jets in the context of VBF/VBS analyses has also been explored recently by CMS~\cite{Khachatryan:2015bnx}.  With recent advances in q/g tagging and with upcoming detector upgrades to extend q/g tagging capabilities in the forward regions of ATLAS and CMS, it is prudent to revisit this important topic for VBF/VBS analyses.  In general, this task has two aspects: (1) using q/g tagging to distinguish electroweak signals from continuum QCD backgrounds and (2) using these techniques to differentiate signal production mechanisms.  In particular, VBF Higgs production can have a similar phenomenology to gluon-gluon fusion Higgs production (ggH) produced in association with two jets.  For various global fits, it is important to be able to statistically differentiate the various production modes.
+
+A further complication to q/g studies in general is that usually other analyses selections are optimized first and then q/g tagging is applied near the end of a selection chain.  This can make the use of q/g tagging suboptimal and one may gain from relaxing other traditional requirements (e.g. $m_{jj}$ or $\Delta\eta_{jj}$) while tightening the q/g tagging selection.  At Les Houches 2019, this interplay was investigated in the context of separating ggH from VBF Higgs production.  The results are summarized in Fig.~\ref{fig:jets:qg}.  Since tracking information is only available in the central region, various levels of information were used to train classifiers.  Higher $m_{jj}$ requirements bias the jet $\eta$ distribution to be more forward and thus there was less performance gain from adding track observables.  The interplay with $m_{jj}$ is non-trivial and so gains may be possible by considering a simultaneous optimization. 
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\textwidth]{figs/qgstudy.pdf}
-\caption{blah}
+\caption{ROC curves for separating VBF Higgs production from ggH Higgs production.  The three plots are distinguished by their $m_{jj}$ values, indicated above.  The three colored lines in each plot correspond to ROC curves for various levels of information used in the classifiers: jet kinematic information only (blue), additionally including jet constituent track multiplicity (orange), and also including a suite of angularities for the two jets (green).}
 \label{fig:jets:qg}
 \end{figure}
+
+The interplay between q/g tagging and other event selections is an important area of research for further study in the future.  This includes both the correlation between q/g tagging and event kinematic features as well as with other jet substructure observables such as subjet q/g tagging and $\tau_{21}$ and jet mass.
 
 \subsection{\textsc{Squirrel} for the Gluon PDF}
 \label{sec:jets:pdf}

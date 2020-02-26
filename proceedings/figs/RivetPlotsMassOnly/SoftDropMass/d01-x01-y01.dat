@@ -4,10 +4,13 @@ DrawOnly=/SoftDropMass/d01-x01-y01 //Users/jenniferroloff/Work/tuningStudies/Sof
 Title=Dijet selection, Soft Drop $\beta$ = 0.0, $z_{cut}$ = 0.1
 RatioPlotReference=/SoftDropMass/d01-x01-y01
 RatioPlot=1
-LogY=1
+LogY=0
+LegendXPos=0.04
 XLabel=$\mathrm{log}_{10}[(m^{\mathrm{soft drop}}/p_{T}^{\mathrm{ungroomed}})^2]$
-YLabel=(1/$\sigma_{\mathrm{resum}}$) d$\sigma$/d $\mathrm{log}_{10}[(m^{\mathrm{soft drop}}/p_{T}^{\mathrm{ungroomed}})^2]$
+YLabel=(1/$\sigma_{\mathrm{resum}}$) d$\sigma$/d $\mathrm{log}_{10}[(m^{\mathrm{SD}}/p_{T}^{\mathrm{Ungr.}})^2]$
+LegendYPos=0.45
 Legend=1
+LeftMargin=1.8
 # END PLOT
 
 # BEGIN HISTO1D /SoftDropMass/d01-x01-y01
@@ -33,7 +36,8 @@ Title=Data
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/SoftDropMass/d01-x01-y01
 LineColor=red
-LineStyle=solid
+LineStyle=dashed
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/SoftDropMassInclPt_tune.yoda/SoftDropMass/d01-x01-y01
 ScaledBy=1.24455507156191700e-05
 Title=Mass only, incl. pT
@@ -53,7 +57,8 @@ Title=Mass only, incl. pT
 
 # BEGIN HISTO1D //Users/jenniferroloff/Work/tuningStudies/SoftDropMassPtBin_tune.yoda/SoftDropMass/d01-x01-y01
 LineColor=blue
-LineStyle=solid
+LineStyle=dotted
+LineWidth=0.06
 Path=//Users/jenniferroloff/Work/tuningStudies/SoftDropMassPtBin_tune.yoda/SoftDropMass/d01-x01-y01
 ScaledBy=6.25880143952433433e-05
 Title=Mass only, pt binned
