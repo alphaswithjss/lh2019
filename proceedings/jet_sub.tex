@@ -136,17 +136,45 @@ The non-perturbative region is often avoided, but these studies indicate that th
 
 \subsection{q/g tagging in VBF and VBS}
 \label{sec:jets:vbsbvf}
+Quark/gluon tagging is a key benchmark for jet substructure studies and has been extensively studied elsewhere (see e.g. Ref.~\cite{Badger:2016bpw,Gras:2017jty}).  Tagging quark jets in the context of VBF/VBS analyses has also been explored recently by CMS~\cite{Khachatryan:2015bnx}.  With recent advances in q/g tagging and with upcoming detector upgrades to extend q/g tagging capabilities in the forward regions of ATLAS and CMS, it is prudent to revisit this important topic for VBF/VBS analyses.  In general, this task has two aspects: (1) using q/g tagging to distinguish electroweak signals from continuum QCD backgrounds and (2) using these techniques to differentiate signal production mechanisms.  In particular, VBF Higgs production can have a similar phenomenology to gluon-gluon fusion Higgs production (ggH) produced in association with two jets.  For various global fits, it is important to be able to statistically differentiate the various production modes. 
 
-Quark/gluon tagging is a key benchmark for jet substructure studies and has been extensively studied elsewhere (see e.g. Ref.~\cite{Badger:2016bpw,Gras:2017jty}).  Tagging quark jets in the context of VBF/VBS analyses has also been explored recently by CMS~\cite{Khachatryan:2015bnx}.  With recent advances in q/g tagging and with upcoming detector upgrades to extend q/g tagging capabilities in the forward regions of ATLAS and CMS, it is prudent to revisit this important topic for VBF/VBS analyses.  In general, this task has two aspects: (1) using q/g tagging to distinguish electroweak signals from continuum QCD backgrounds and (2) using these techniques to differentiate signal production mechanisms.  In particular, VBF Higgs production can have a similar phenomenology to gluon-gluon fusion Higgs production (ggH) produced in association with two jets.  For various global fits, it is important to be able to statistically differentiate the various production modes.
+A further complication to q/g studies in general is that usually other analyses selections are optimised first and then q/g tagging is applied near the end of a selection chain.  This can make the use of q/g tagging sub-optimal and one may gain from relaxing other traditional requirements (e.g. $m_{jj}$ or $\Delta\eta_{jj}$) while tightening the q/g tagging selection. At Les Houches 2019, this interplay was investigated in the context of separating ggH from VBF Higgs production.
 
-A further complication to q/g studies in general is that usually other analyses selections are optimized first and then q/g tagging is applied near the end of a selection chain.  This can make the use of q/g tagging suboptimal and one may gain from relaxing other traditional requirements (e.g. $m_{jj}$ or $\Delta\eta_{jj}$) while tightening the q/g tagging selection.  At Les Houches 2019, this interplay was investigated in the context of separating ggH from VBF Higgs production.  The results are summarized in Fig.~\ref{fig:jets:qg}.  Since tracking information is only available in the central region, various levels of information were used to train classifiers.  Higher $m_{jj}$ requirements bias the jet $\eta$ distribution to be more forward and thus there was less performance gain from adding track observables.  The interplay with $m_{jj}$ is non-trivial and so gains may be possible by considering a simultaneous optimization. 
+The simulated samples of Higgs boson events are generated using the \Powheg  program for both ggH \cite{Campbell:2012am} and VBF \cite{Nason:2009ai} at NLO accuracy. To properly simulate the recoil of the final state particles caused by additional QCD radiation, \Powheg generator is interfaced with the \Pythia program \cite{Sjostrand:2014zea}. The Higgs boson is left undecayed and its mass is set at $M_H=125~\rm GeV$. The Parton Distribution Functions (PDF) used in this note are NNPDF3.0 \cite{Ball:2017nwa} for both the matrix element and parton shower simulations. The final states particles are then clustered into anti-$k_T$\cite{Cacciari:2008gp} jets of radius $R = 0.4$ using FastJet3 \cite{Cacciari:2011ma}. All jet constituents are required to have $|\eta| < 4.7$ and $p_T > 1\rm ~GeV$. Events with at least two jets with $p_T> 30\rm ~GeV$ and $|\eta|<4.7$ are kept.
+
+The selected events are then used to train Machine Learning (ML) models using the \xgboost library~\cite{Chen:2016btl}. Two sets of jet-substructure variables, defined below, are computed to increase effectiveness in disguising VBF from ggF to kinematic only discriminant.
+\begin{itemize}
+    \item Jet angularities \cite{Larkoski:2014pca} could be written as
+    \begin{equation}
+        \lambda_{\alpha} = \sum_{i \in \rm jet} z_i \theta_{i}^\alpha
+    \end{equation}
+    where $z_i$ is the momentum fraction of jet constituent i, and $\theta_i$ is the normalised rapidity-azimuth angle to the jet axis \footnote{$z_i = p_{T,i}/\sum_{i\in \rm jet} p_{T,i}$, $\theta_i = \Delta R_i/R$ where R is the jet radius and $\Delta R_i$ is the rapidity-azimuth distance from constituent $i$ to the jet axis}
+    The Energy Correlation Functions (EFC) \cite{Moult:2016cvt} variables are defined by
+    \begin{equation}
+        C_{\alpha} = \sum_{i < j} z_i z_j \theta_{ij}^\alpha
+    \end{equation}
+    $\alpha$ is set to $0.5$, $1$ and $2$ for both $C_{\alpha}$ and $\lambda_{\alpha}$. It easy to note that $\lambda_1$ represent the width and $\lambda_2$ the mass of the jet.
+    \item Jet multiplicity variables, which is the count of number of charged  tracks (within $|\eta|<2.5$) and the total number of particles within a jet.
+\end{itemize}
+
+In addition to jet-substructure variables, event-level kinematic variables are defined using the VBF tagging jets in order to isolate VBF event from other SM processes. These are listed below
+\begin{itemize}
+    \item Invariant mass $m_{jj}$, $\Delta\eta_{jj}$ and $\Delta\phi_{jj}$ separation of the two jets
+    \item Transverse momentum of the two jets
+\end{itemize}
+
+The variables defined above are combined in three separate \xgboost models. The first model uses kinematic variables only. The second uses jet constituent multiplicities alongside the kinematic variables. The third and final model uses all the previously mentioned variables while adding jet substructure angularities. Every model is trained\footnote{\xgoost is used with the default training parameters.} in 3 different kinematic bins, $0\leq m_{jj}<350~\rm GeV$, $350\leq m_{jj} <700~\rm GeV$ and $m_{jj}\geq 700~\rm GeV$.
 
 \begin{figure}[h!]
-\centering
-\includegraphics[width=0.95\textwidth]{figs/qgstudy.pdf}
-\caption{ROC curves for separating VBF Higgs production from ggH Higgs production.  The three plots are distinguished by their $m_{jj}$ values, indicated above.  The three colored lines in each plot correspond to ROC curves for various levels of information used in the classifiers: jet kinematic information only (blue), additionally including jet constituent track multiplicity (orange), and also including a suite of angularities for the two jets (green).}
-\label{fig:jets:qg}
+  \centering
+%\includegraphics[width=0.95\textwidth]{figs/qgstudy.pdf}
+\includegraphics[width=0.3\textwidth]{figs/Mjj-0-350-ROC.pdf}
+\includegraphics[width=0.3\textwidth]{figs/Mjj-350-700-ROC.pdf}
+\includegraphics[width=0.3\textwidth]{figs/Mjj-700-inf-ROC.pdf}
+  \caption{ROC curves for separating VBF Higgs production from ggH Higgs production.  The three plots are distinguished by their $m_{jj}$ values, indicated above.  The three colored lines in each plot correspond to ROC curves for various levels of information used in the classifiers: jet kinematic information only (blue), additionally including jet constituent track multiplicity (orange), and also including a suite of angularities for the two jets (green).}
+  \label{fig:jets:qg}
 \end{figure}
+The results are summarised in Fig.~\ref{fig:jets:qg}.  Since tracking information is only available in the central region, various levels of information were used to train classifiers.  Higher $m_{jj}$ requirements bias the jet $\eta$ distribution to be more forward and thus there was less performance gain from adding track observables.  The interplay with $m_{jj}$ is non-trivial and so gains may be possible by considering a simultaneous optimisation.
 
 The interplay between q/g tagging and other event selections is an important area of research for further study in the future.  This includes both the correlation between q/g tagging and event kinematic features as well as with other jet substructure observables such as subjet q/g tagging and $\tau_{21}$ and jet mass.
 
