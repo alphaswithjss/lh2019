@@ -6,7 +6,7 @@ as a test case.
 
 Parton shower programs are an an important aspect
 of LHC phenomenology, since they imprint perturbative all-order effects onto the
-jet structure produced by Event Generators. As such, they serve two primary
+jet structure produced by event generators. As such, they serve two primary
 purposes: $1)$ the distribution of low-multiplicity
 (hard-scattering) states over states of arbitrarily high multiplicity, as well
 as $2)$ generating the effect of resummation for observable depending only on 
@@ -93,7 +93,7 @@ The train, validation, and test set sizes were 175k, 10k, and 15k, respectively.
 %
 The PFN classifiers were trained for 25 epochs with a batch size of 500.
 
-Receiver operating characteristic (ROC) curves from the machine learning classifiers are presented in Fig.~\ref{fig:jets:np:triplecollinearNN}.  These curves show the performance of a classifier designed to distinguish the default simulation from one that includes either the triple collinear splitting function or the double soft splitting function.  A neural network is compared with a simple classifier that only uses the jet constituent multiplicity.  We find that the effect triple-collinear corrections (which integrate to
+Receiver operating characteristic (ROC) curves from the machine learning classifiers are presented in Fig.~\ref{fig:jets:np:triplecollinearNN}.  These curves show the performance of a classifier designed to distinguish the default simulation from one that includes either the triple collinear splitting function or the double soft splitting function.  A neural network is compared with a simple classifier that only uses the jet constituent multiplicity.  We find that the triple-collinear corrections (which integrate to
 the DGLAP kernels $P_{qq'}$ and $P_{q\bar q}$) is difficult to pinpoint. 
 It is somewhat surprising that the impact is almost vanishing.  Furthermore, we find that double-soft corrections have sizable impact, and can
 easily be filtered out of the data. This is expected, since the theoretical

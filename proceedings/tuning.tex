@@ -1,4 +1,4 @@
-While the jet mass differential cross section holds great potential for Monte Carlo tuning, it is only one of many.  The last several years have produced numerous measurements of jet and jet substructure observables at the LHC. 
+While the jet mass differential cross section holds great potential for Monte Carlo tuning, it is only one of many observables.  The last several years have produced numerous measurements of jet and jet substructure observables at the LHC. 
 Some of these measurements have been motivated by improving parton distribution functions and testing perturbative QCD predictions, 
 while others have been designed to improve jet modeling by providing new and better inputs to Monte Carlo tuning.
 Some of these, like the fragmentation functions~\cite{Aad:2019onw}, have been used for years to tune Monte Carlo predictions, 
@@ -22,7 +22,6 @@ Each configuration is run with \texttt{PhaseSpace:pTHatMin} of 400 GeV, using 20
 This allows sufficient sampling of the parameter space for the specific $p_{T}$ cuts of each analysis. 
 
 \begin{table}[ht!]
-\caption{Choices of parameters to tune, and their maximum and minimum values.}
 \centering\begin{tabular}{ | c | | c | c | } \hline
                                      & Min. Value   & Max. Value    \\ \hline
 \texttt{SigmaProcess:alphaSvalue}             &  0.12        & 0.15    \\ \hline
@@ -37,10 +36,11 @@ This allows sufficient sampling of the parameter space for the specific $p_{T}$ 
 \texttt{MultipartonInteractions:alphaSvalue}  &  0.1         & 0.15    \\ \hline
 \end{tabular}
 \label{tab:parameterSpace}
+\caption{Choices of parameters to tune, and their maximum and minimum values.}
 \end{table}
 
-Several sets of tunes are compared in order to disentangle different effects from the measurement. 
-Two sets of tunes are compared in order to disentangle the impact of different effects on the tuning.
+Several sets of tunes are compared in order to disentangle different effects from the measurements. 
+Additionally, two sets of tunes are compared in order to disentangle the impact of different effects on the tuning.
 In all cases, the results are compared for four different observables:
 the SoftDrop jet mass distribution for $\beta=0$, the SoftDrop jet mass distribution for $\beta=2$, 
 the number of subjets in a soft-dropped jet $N_{\mathrm{subjets}}$, and $\mathrm{ECF}_2^{\mathrm{norm}}$.
@@ -69,7 +69,7 @@ While the $p_T$-binned result in principle provides more access to information s
 
 The second set of tunes compares the results from each individual measurement. The first of these is the same tune as before, using the $p_T$ inclusive SoftDrop jet mass measurements.
 The second tune uses the measurements of six jet substructure measurements in jets groomed with the SoftDrop algorithms, as measured in Ref.~\cite{Aaboud:2019aii}.
-These measurements are compared to two standard tunes: the ATLAS A14 tune and the MONASH tune.~\footnote{The ATLAS tune is slightly different than the standard ATLAS tune, since it uses the ATLAS tune results, but does not use the recommended PDF set.}
+These measurements are compared to two standard tunes: the ATLAS A14 tune and the MONASH tune.\footnote{The ATLAS tune is slightly different than the standard ATLAS tune, since it uses the ATLAS tune results, but does not use the recommended PDF set.}
 The results of these are shown in Figure~\ref{allTune}. 
 In general, the agreement of substructure observables is improved by the use of substructure measurements compared to the ATLAS A14 tune or the MONASH tune.
 As demonstrated in the mass distribution, the tunes from this study seem to lack some information about the fixed-order tune, 
@@ -97,16 +97,16 @@ The full set of tuned parameters and their uncertainties is shown in Table~\ref{
 
 \centering\begin{tabular}{ | c | | c | c | c | c | c |} \hline
                                      & MONASH   & ATLAS  & SDM Incl Pt   & SDM Pt Binned & JSS Observables  \\ \hline
-\texttt{SigmaProcess:alphaSvalue}             &  0.130   & 0.144  & 0.126+/-0.003 & 0.126+/-0.001 & 0.133+/-0.002 \\ \hline
-\texttt{BeamRemnants:primordialKThard}        &  1.8     & 1.72   & 1.825+/-0.055 & 1.794+/-0.011 & 1.785+/-0.048 \\ \hline
-\texttt{SpaceShower:pT0Ref}                   &  2.0     & 1.30   & 1.668+/-0.100 & 1.744+/-0.078 & 1.721+/-0.121 \\ \hline
-\texttt{SpaceShower:pTmaxFudge}               &          & 0.95   & 1.150+/-0.054 & 1.071+/-0.014 & 1.036+/-0.034 \\ \hline
-\texttt{SpaceShower:pTdampFudge}              &          & 1.21   & 1.214+/-0.058 & 1.157+/-0.011 & 1.284+/-0.040 \\ \hline
-\texttt{SpaceShower:alphaSvalue}              &  0.1365  & 0.125  & 0.123+/-0.003 & 0.126+/-0.001 & 0.130+/-0.003 \\ \hline
-\texttt{TimeShower:alphaSvalue}               &  0.1365  & 0.126  & 0.132+/-0.001 & 0.131+/-0.001 & 0.133+/-0.000 \\ \hline
-\texttt{StringPT:sigma}                       &  0.335   &        & 0.348+/-0.003 & 0.350+/-0.003 & 0.333+/-0.006 \\ \hline
-\texttt{MultipartonInteractions:pT0Ref}       &  2.28    & 1.98   & 2.000+/-0.100 & 2.181+/-0.049 & 2.441+/-0.148 \\ \hline
-\texttt{MultipartonInteractions:alphaSvalue}  &  0.130   & 0118   & 0.116+/-0.003 & 0.126+/-0.002 & 0.128+/-0.003 \\ \hline
+\texttt{SigmaProcess:alphaSvalue}             &  0.130   & 0.144  & 0.126 $\pm$ 0.003 & 0.126 $\pm$ 0.001 & 0.133 $\pm$ 0.002 \\ \hline
+\texttt{BeamRemnants:primordialKThard}        &  1.8     & 1.72   & 1.825 $\pm$ 0.055 & 1.794 $\pm$ 0.011 & 1.785 $\pm$ 0.048 \\ \hline
+\texttt{SpaceShower:pT0Ref}                   &  2.0     & 1.30   & 1.668 $\pm$ 0.100 & 1.744 $\pm$ 0.078 & 1.721 $\pm$ 0.121 \\ \hline
+\texttt{SpaceShower:pTmaxFudge}               &          & 0.95   & 1.150 $\pm$ 0.054 & 1.071 $\pm$ 0.014 & 1.036 $\pm$ 0.034 \\ \hline
+\texttt{SpaceShower:pTdampFudge}              &          & 1.21   & 1.214 $\pm$ 0.058 & 1.157 $\pm$ 0.011 & 1.284 $\pm$ 0.040 \\ \hline
+\texttt{SpaceShower:alphaSvalue}              &  0.1365  & 0.125  & 0.123 $\pm$ 0.003 & 0.126 $\pm$ 0.001 & 0.130 $\pm$ 0.003 \\ \hline
+\texttt{TimeShower:alphaSvalue}               &  0.1365  & 0.126  & 0.132 $\pm$ 0.001 & 0.131 $\pm$ 0.001 & 0.133 $\pm$ 0.000 \\ \hline
+\texttt{StringPT:sigma}                       &  0.335   &        & 0.348 $\pm$ 0.003 & 0.350 $\pm$ 0.003 & 0.333 $\pm$ 0.006 \\ \hline
+\texttt{MultipartonInteractions:pT0Ref}       &  2.28    & 1.98   & 2.000 $\pm$ 0.100 & 2.181 $\pm$ 0.049 & 2.441 $\pm$ 0.148 \\ \hline
+\texttt{MultipartonInteractions:alphaSvalue}  &  0.130   & 0118   & 0.116 $\pm$ 0.003 & 0.126 $\pm$ 0.002 & 0.128 $\pm$ 0.003 \\ \hline
 \end{tabular}}
 \caption{Values of tuned parameters.}
 \label{tab:tuneResults}
